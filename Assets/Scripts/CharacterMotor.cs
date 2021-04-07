@@ -12,7 +12,6 @@ public class CharacterMotor : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
-    [SerializeField] private float airControl = 5f;
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
