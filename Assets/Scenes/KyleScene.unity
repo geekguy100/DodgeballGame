@@ -241,6 +241,26 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &675756305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+  m_PrefabInstance: {fileID: 995158172445663490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &675756314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675756305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b4211111ec7514491a0653a25ab568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 1
+  dashStrength: 30
+  dashTime: 0.25
 --- !u!1 &1323736999
 GameObject:
   m_ObjectHideFlags: 0

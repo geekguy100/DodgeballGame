@@ -17,5 +17,4 @@ public class CharacterRotater : MonoBehaviour
     {
         transform.localRotation = Quaternion.Euler(eulerAngles);
     }
-
 }

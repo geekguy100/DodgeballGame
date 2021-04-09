@@ -28,6 +28,9 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
             motor.Jump();
+
+        if (Input.GetButtonDown("SpecialAbility"))
+            motor.PerformSpecialAbility();
     }
 
     private void FixedUpdate()
