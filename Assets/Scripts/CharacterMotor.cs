@@ -73,6 +73,7 @@ public class CharacterMotor : MonoBehaviour
             grounded = false;
     }
 
+    #region --- Movement ---
     public void Move(Vector3 dir)
     {
         if (!canMove)
@@ -88,6 +89,17 @@ public class CharacterMotor : MonoBehaviour
 
         rb.velocity = vel;
     }
+
+    /// <summary>
+    /// Returns true if the character is moving.
+    /// </summary>
+    /// <returns>True if the character is moving.</returns>
+    public bool IsMoving()
+    {
+        return localMovementDirection != Vector3.zero;
+    }
+
+    #endregion
 
     #region --- Jumping ---
     public void Jump()

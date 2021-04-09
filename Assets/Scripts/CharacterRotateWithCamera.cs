@@ -23,14 +23,21 @@ public class CharacterRotateWithCamera : MonoBehaviour
 
     private void Update()
     {
-        Vector3 movementDir = transform.InverseTransformDirection(motor.LocalMovementDirection);
+        bool isMoving = motor.IsMoving();
 
         // Only rotate the character with the camera if we are moving forwards or backwards.
-        if (movementDir.z != 0)
+        //if (movementDir.z != 0)
+        //{
+        //    Vector3 camEulerAngles = cam.localRotation.eulerAngles;
+        //    camEulerAngles.x = 0f;
+
+        //    rotater.SetRotation(camEulerAngles);
+        //}
+
+        if (isMoving)
         {
             Vector3 camEulerAngles = cam.localRotation.eulerAngles;
             camEulerAngles.x = 0f;
-
             rotater.SetRotation(camEulerAngles);
         }
     }
