@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 82a664775f097e34180ef0b26314ca21
+guid: b3867ed85fad6a6459f995a77c9086af
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowModel_BakeNew_baked
+    second: {fileID: 2100000, guid: baa72645ecf72cf4f8ec21959e88df47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
