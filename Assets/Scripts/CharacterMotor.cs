@@ -21,6 +21,7 @@ public class CharacterMotor : MonoBehaviour
 
     // True if the character is on the ground.
     private bool grounded = false;
+    public bool Grounded { get { return grounded; } }
 
     /// <summary>
     /// The character's local direction of movement.

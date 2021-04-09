@@ -16,7 +16,19 @@ public class DashAbility : ISpecialAbility
     [Tooltip("The time in seconds to wait before controls are restored to the character.")]
     [SerializeField] private float dashTime;
 
+    [Header("Arc Jump")]
+    [Tooltip("How long the player is able to use the arc jump after the inital dash.")]
+    [SerializeField] private float arcJumpInputTime;
+
+    //[Tooltip("The time in seconds to wait before controls are restored to the character after an arc jump.")]
+    //[SerializeField] private float arcJumpTime;
+
+    [Tooltip("How intense the arc jump is.")]
+    [SerializeField] private float arcForce;
+
     private Rigidbody rb;
+
+    private bool arcJumped = false;
 
     protected override void ExecuteAbility(CharacterMotor characterMotor, object args)
     {
@@ -33,12 +45,41 @@ public class DashAbility : ISpecialAbility
         characterMotor.CanMove = false;
         rb.AddForce(input * dashStrength, ForceMode.VelocityChange);
 
+        StartCoroutine(ArcJump(characterMotor));
         yield return new WaitForSeconds(dashTime);
 
-        characterMotor.CanMove = true;
+        if (!arcJumped)
+            characterMotor.CanMove = true;
     }
 
-    #region --- Dash Implementation 2: Reenable player control once velocity is 0 ---
+    private IEnumerator ArcJump(CharacterMotor characterMotor)
+    {
+        float currentTime = 0f;
+        while (currentTime < arcJumpInputTime)
+        {
+            currentTime += Time.deltaTime;
+            if (Input.GetButtonDown("Jump"))
+            {
+                print("ARCING");
+                arcJumped = true;
+                rb.AddForce(transform.forward + (Vector3.up / 2) * arcForce, ForceMode.VelocityChange);
+                while (!characterMotor.Grounded)
+                {
+                    yield return null;
+                }
+
+                print("DONE ARCING");
+                arcJumped = false;
+                characterMotor.CanMove = true;
+
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+    #region --- **OLD** Dash Implementation 2: Reenable player control once velocity is 0 ---
     //[Header("Drag and Angular Drag")]
     //[Tooltip("The drag to apply to the character during a dash.")]
     //[SerializeField] private float drag;
