@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         PlayerInput.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/09/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Script that takes in player keyboard input.
 *****************************************************************************/
 using UnityEngine;
 

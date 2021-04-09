@@ -10,10 +10,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMotor : MonoBehaviour
 {
+    #region --- Movement Fields ---
     [Header("Movement")]
     [Tooltip("How fast the character moves.")]
     [SerializeField] private float movementSpeed;
 
+    // True if the character can move.
+    private bool canMove = true;
+    public bool CanMove { get { return canMove; } set { canMove = value; } }
+
+    // True if the character is on the ground.
+    private bool grounded = false;
+
+    /// <summary>
+    /// The character's local direction of movement.
+    /// </summary>
+    public Vector3 LocalMovementDirection { get { return localMovementDirection; } }
+    private Vector3 localMovementDirection;
+
+    #endregion
+
+    #region --- Jumping Fields ---
     [Header("Jumping")]
     [SerializeField] private float jumpHeight;
     [SerializeField] private Transform groundCheck;
@@ -30,20 +47,11 @@ public class CharacterMotor : MonoBehaviour
     [SerializeField] private bool consecutiveJumpsLessPowerful = true;
     private int currentJumps;
 
+    #endregion
+
     // The special ability attached to this character.
     private ISpecialAbility specialAbility;
-
-    // True if the character can move.
-    private bool canMove = true;
-    public bool CanMove { get { return canMove; } set { canMove = value; } }
-
-    // True if the character is on the ground.
-    private bool grounded = false;
-
-    private Vector3 movementDir;
-
     private Rigidbody rb;
-
 
     private void Awake()
     {
@@ -53,7 +61,7 @@ public class CharacterMotor : MonoBehaviour
 
     private void Update()
     {
-        bool touchingGround = Physics.Linecast(transform.position, groundCheck.position, whatIsGround);
+        bool touchingGround = Physics.Linecast(transform.position, groundCheck.position);
 
         // Once we hit the ground, make sure to reset out current jumps.
         if (!grounded && touchingGround)
@@ -69,11 +77,11 @@ public class CharacterMotor : MonoBehaviour
     {
         if (!canMove)
         {
-            movementDir = Vector3.zero;
+            localMovementDirection = Vector3.zero;
             return;
         }
 
-        movementDir = dir;
+        localMovementDirection = dir;
 
         Vector3 vel = new Vector3(dir.x, 0, dir.z) * movementSpeed;
         vel.y = rb.velocity.y;
@@ -111,7 +119,7 @@ public class CharacterMotor : MonoBehaviour
     public void PerformSpecialAbility()
     {
         if (specialAbility != null)
-            specialAbility.Execute(this, movementDir);
+            specialAbility.Execute(this, localMovementDirection);
     }
     #endregion
 }
