@@ -114,16 +114,4 @@ public class CharacterMotor : MonoBehaviour
             specialAbility.Execute(this, movementDir);
     }
     #endregion
-
-    #region --- Physics (AddForce, etc.) ---
-    /// <summary>
-    /// Adds a force to the character.
-    /// </summary>
-    /// <param name="force">A vector representing the force applied.</param>
-    /// <param name="forceMode">The ForceMode associated with the force.</param>
-    public void AddForce(Vector3 force, ForceMode forceMode)
-    {
-        rb.AddForce(force, forceMode);
-    }
-    #endregion
 }

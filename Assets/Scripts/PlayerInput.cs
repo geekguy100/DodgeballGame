@@ -21,9 +21,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        input = new Vector3(h, 0, v);
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        input = new Vector3(h, 0, v).normalized;
         input = transform.TransformDirection(input);
 
         if (Input.GetButtonDown("Jump"))
