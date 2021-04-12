@@ -16,15 +16,11 @@ public class DashAbility : ISpecialAbility
     [Tooltip("The time in seconds to wait before controls are restored to the character.")]
     [SerializeField] private float dashTime;
 
-    [Header("Arc Jump")]
-    [Tooltip("How long the player is able to use the arc jump after the inital dash.")]
-    [SerializeField] private float arcJumpInputTime;
-
-    //[Tooltip("The time in seconds to wait before controls are restored to the character after an arc jump.")]
-    //[SerializeField] private float arcJumpTime;
+    private bool canDash = true;
 
     [Tooltip("How intense the arc jump is.")]
-    [SerializeField] private float arcForce;
+    [SerializeField] private float arcForwardForce;
+    [SerializeField] private float arcUpwardsForce;
 
     private Rigidbody rb;
 
@@ -40,6 +36,11 @@ public class DashAbility : ISpecialAbility
 
     private IEnumerator PerformDash(CharacterMotor characterMotor, object args)
     {
+        if (!canDash)
+            yield break;
+
+        canDash = false;
+
         Vector3 input = (Vector3)args;
 
         characterMotor.CanMove = false;
@@ -47,22 +48,31 @@ public class DashAbility : ISpecialAbility
 
         StartCoroutine(ArcJump(characterMotor));
         yield return new WaitForSeconds(dashTime);
+        canDash = true;
 
         if (!arcJumped)
+        {
+            print("CAN MOVE");
             characterMotor.CanMove = true;
+        }
     }
 
     private IEnumerator ArcJump(CharacterMotor characterMotor)
     {
         float currentTime = 0f;
-        while (currentTime < arcJumpInputTime)
+
+        // We keep track of the dashTime so we HAVE to jump mid dash.
+        while (currentTime < dashTime)
         {
             currentTime += Time.deltaTime;
             if (Input.GetButtonDown("Jump"))
             {
                 print("ARCING");
                 arcJumped = true;
-                rb.AddForce(transform.forward + (Vector3.up / 2) * arcForce, ForceMode.VelocityChange);
+                rb.AddForce((transform.forward * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
+
+                // Wait until we get off the ground.
+                yield return new WaitUntil(() => { return characterMotor.Grounded == false; });
                 while (!characterMotor.Grounded)
                 {
                     yield return null;
