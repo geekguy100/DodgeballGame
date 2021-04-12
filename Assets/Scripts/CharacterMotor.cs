@@ -64,6 +64,9 @@ public class CharacterMotor : MonoBehaviour
     {
         bool touchingGround = Physics.Linecast(transform.position, groundCheck.position);
 
+        if (Input.GetKeyDown(KeyCode.Y))
+            canMove = true;
+
         // Once we hit the ground, make sure to reset out current jumps.
         if (!grounded && touchingGround)
         {
@@ -98,6 +101,12 @@ public class CharacterMotor : MonoBehaviour
     public bool IsMoving()
     {
         return localMovementDirection != Vector3.zero;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!canMove)
+            canMove = true;
     }
 
     #endregion

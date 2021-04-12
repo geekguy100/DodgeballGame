@@ -52,7 +52,7 @@ public class DashAbility : ISpecialAbility
 
         if (!arcJumped)
         {
-            print("CAN MOVE");
+            print("no arc jump, so moving!");
             characterMotor.CanMove = true;
         }
     }
@@ -75,13 +75,17 @@ public class DashAbility : ISpecialAbility
                 yield return new WaitUntil(() => { return characterMotor.Grounded == false; });
                 while (!characterMotor.Grounded)
                 {
+                    if (characterMotor.CanMove)
+                        break;
+
                     yield return null;
                 }
 
                 print("DONE ARCING");
                 arcJumped = false;
                 characterMotor.CanMove = true;
-
+                
+                // Return from the coroutine.
                 yield break;
             }
 
