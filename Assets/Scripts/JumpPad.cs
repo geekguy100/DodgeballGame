@@ -9,10 +9,14 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
+    [SerializeField] private JumpPadSettings settings;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag(""))
+        CharacterMotor motor = collision.transform.GetComponent<CharacterMotor>();
+        if (motor != null)
         {
+            Rigidbody rb = motor.gameObject.GetComponent<Rigidbody>();
 
         }
     }

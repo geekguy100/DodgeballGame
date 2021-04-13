@@ -70,48 +70,51 @@ public class DashAbility : ISpecialAbility
             {
                 print("ARCING");
                 arcJumped = true;
+
                 rb.AddForce((transform.forward * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
 
-                // Wait until we get off the ground.
-                yield return new WaitUntil(() => { return characterMotor.Grounded == false; });
+                yield return new WaitForSeconds(dashTime);
 
-                enableCollisionCheck = true;
-                while (!colliding)
-                {
-                    //if (characterMotor.CanMove)
-                    //    break;
-
-                    yield return null;
-                }
-
-                print("DONE ARCING");
                 arcJumped = false;
-                enableCollisionCheck = false;
-                characterMotor.ResetVelocity();
+
+                //enableCollisionCheck = true;
+                //while (!colliding)
+                //{
+                //    //if (characterMotor.CanMove)
+                //    //    break;
+
+                //    yield return null;
+                //}
+
+                //print("DONE ARCING");
+                //arcJumped = false;
+                //enableCollisionCheck = false;
+                //characterMotor.ResetVelocity();
+                //characterMotor.overrideCollisionCheck = false;
 
 
-                //characterMotor.CanMove = true;
+                ////characterMotor.CanMove = true;
 
-                // Return from the coroutine.
-                yield break;
+                //// Return from the coroutine.
+                //yield break;
             }
 
             yield return null;
         }
     }
 
-    private bool colliding = false;
-    private bool enableCollisionCheck = false;
-    private void OnCollisionEnter()
-    {
-        if (enableCollisionCheck)
-            colliding = true;
-    }
+    //private bool colliding = false;
+    //private bool enableCollisionCheck = false;
+    //private void OnCollisionEnter()
+    //{
+    //    if (enableCollisionCheck)
+    //        colliding = true;
+    //}
 
-    private void OnCollisionExit()
-    {
-        colliding = false;
-    }
+    //private void OnCollisionExit()
+    //{
+    //    colliding = false;
+    //}
 
     #region --- **OLD** Dash Implementation 2: Reenable player control once velocity is 0 ---
     //[Header("Drag and Angular Drag")]

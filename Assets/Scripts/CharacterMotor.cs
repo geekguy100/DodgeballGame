@@ -99,14 +99,9 @@ public class CharacterMotor : MonoBehaviour
 
     public void ResetVelocity()
     {
+        Debug.Log("PLAYER VELOCITY RESET");
         rb.velocity = Vector3.zero;
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (!canMove)
-    //        canMove = true;
-    //}
 
     #endregion
 
@@ -143,4 +138,10 @@ public class CharacterMotor : MonoBehaviour
             specialAbility.Execute(this, localMovementDirection);
     }
     #endregion
+
+    private void OnCollisionEnter()
+    {
+        if (rb.velocity != Vector3.zero)
+            ResetVelocity();
+    }
 }
