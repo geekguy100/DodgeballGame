@@ -43,7 +43,7 @@ public class DashAbility : ISpecialAbility
 
         Vector3 input = (Vector3)args;
 
-        characterMotor.CanMove = false;
+        //characterMotor.CanMove = false;
         rb.AddForce(input * dashStrength, ForceMode.VelocityChange);
 
         StartCoroutine(ArcJump(characterMotor));
@@ -53,7 +53,8 @@ public class DashAbility : ISpecialAbility
         if (!arcJumped)
         {
             print("no arc jump, so moving!");
-            characterMotor.CanMove = true;
+            //characterMotor.CanMove = true;
+            characterMotor.ResetVelocity();
         }
     }
 
@@ -73,24 +74,43 @@ public class DashAbility : ISpecialAbility
 
                 // Wait until we get off the ground.
                 yield return new WaitUntil(() => { return characterMotor.Grounded == false; });
-                while (!characterMotor.Grounded)
+
+                enableCollisionCheck = true;
+                while (!colliding)
                 {
-                    if (characterMotor.CanMove)
-                        break;
+                    //if (characterMotor.CanMove)
+                    //    break;
 
                     yield return null;
                 }
 
                 print("DONE ARCING");
                 arcJumped = false;
-                characterMotor.CanMove = true;
-                
+                enableCollisionCheck = false;
+                characterMotor.ResetVelocity();
+
+
+                //characterMotor.CanMove = true;
+
                 // Return from the coroutine.
                 yield break;
             }
 
             yield return null;
         }
+    }
+
+    private bool colliding = false;
+    private bool enableCollisionCheck = false;
+    private void OnCollisionEnter()
+    {
+        if (enableCollisionCheck)
+            colliding = true;
+    }
+
+    private void OnCollisionExit()
+    {
+        colliding = false;
     }
 
     #region --- **OLD** Dash Implementation 2: Reenable player control once velocity is 0 ---

@@ -15,10 +15,6 @@ public class CharacterMotor : MonoBehaviour
     [Tooltip("How fast the character moves.")]
     [SerializeField] private float movementSpeed;
 
-    // True if the character can move.
-    private bool canMove = true;
-    public bool CanMove { get { return canMove; } set { canMove = value; } }
-
     // True if the character is on the ground.
     private bool grounded = false;
     public bool Grounded { get { return grounded; } }
@@ -64,9 +60,6 @@ public class CharacterMotor : MonoBehaviour
     {
         bool touchingGround = Physics.Linecast(transform.position, groundCheck.position);
 
-        if (Input.GetKeyDown(KeyCode.Y))
-            canMove = true;
-
         // Once we hit the ground, make sure to reset out current jumps.
         if (!grounded && touchingGround)
         {
@@ -80,18 +73,19 @@ public class CharacterMotor : MonoBehaviour
     #region --- Movement ---
     public void Move(Vector3 dir)
     {
-        if (!canMove)
-        {
-            localMovementDirection = Vector3.zero;
-            return;
-        }
+        //if (!canMove)
+        //{
+        //    localMovementDirection = Vector3.zero;
+        //    return;
+        //}
 
         localMovementDirection = dir;
 
-        Vector3 vel = new Vector3(dir.x, 0, dir.z) * movementSpeed;
-        vel.y = rb.velocity.y;
+        //Vector3 vel = new Vector3(dir.x, 0, dir.z) * movementSpeed;
+        //vel.y = rb.velocity.y;
 
-        rb.velocity = vel;
+        //rb.velocity = vel;
+        rb.MovePosition(transform.position + dir * movementSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -103,11 +97,16 @@ public class CharacterMotor : MonoBehaviour
         return localMovementDirection != Vector3.zero;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ResetVelocity()
     {
-        if (!canMove)
-            canMove = true;
+        rb.velocity = Vector3.zero;
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (!canMove)
+    //        canMove = true;
+    //}
 
     #endregion
 
