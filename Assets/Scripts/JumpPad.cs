@@ -25,6 +25,7 @@ public class JumpPad : MonoBehaviour
                 // The player's direction of movement.
                 Vector3 input = motor.LocalMovementDirection;
 
+                rb.drag = 0f;
                 force = (input * settings.ForwardForce) + (Vector3.up * settings.UpwardForce);
             }
             // If there is no input and we want to bounce some random object, 

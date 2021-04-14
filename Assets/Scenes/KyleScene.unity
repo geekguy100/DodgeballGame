@@ -328,11 +328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1052771811291328568, guid: fc7e37dadcef604448e2a1dc7fe31fcd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008474927
+      value: 0.0000000084749265
       objectReference: {fileID: 0}
     - target: {fileID: 1052771811291328568, guid: fc7e37dadcef604448e2a1dc7fe31fcd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014800369
+      value: -0.0000000014800368
       objectReference: {fileID: 0}
     - target: {fileID: 1052771811531801508, guid: fc7e37dadcef604448e2a1dc7fe31fcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1768224314}
   - component: {fileID: 1768224313}
   - component: {fileID: 1768224317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,11 +936,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 14093986297819442, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000002984301
+      value: 0.00000002984301
       objectReference: {fileID: 0}
     - target: {fileID: 14093986297819442, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000051447704
+      value: -0.0000000051447704
       objectReference: {fileID: 0}
     - target: {fileID: 14093986297819442, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

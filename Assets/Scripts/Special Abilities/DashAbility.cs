@@ -38,7 +38,7 @@ public class DashAbility : ISpecialAbility
 
     private IEnumerator PerformDash(CharacterMotor characterMotor, object args)
     {
-        characterMotor.ResetVelocity();
+        //characterMotor.ResetVelocity();
         Vector3 input = characterMotor.LocalMovementDirection;
 
         oldDrag = rb.drag;

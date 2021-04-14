@@ -139,9 +139,12 @@ public class CharacterMotor : MonoBehaviour
     }
     #endregion
 
-    private void OnCollisionEnter()
+    private void OnCollisionEnter(Collision col)
     {
-        if (rb.velocity != Vector3.zero)
+        if (col.gameObject.layer != LayerMask.NameToLayer("IgnoreVelocity") && rb.velocity != Vector3.zero)
+        {
+            print(col.gameObject.name);
             ResetVelocity();
+        }
     }
 }
