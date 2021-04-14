@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MaskDet
+  - Respawn2
+  - CameraShaker
+  - Respawn3
+  - Respawn1
   layers:
   - Default
   - TransparentFX
@@ -12,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Obstruction
   - 
   - 
   - 
