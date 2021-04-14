@@ -13,10 +13,12 @@ public class DashAbility : ISpecialAbility
     [Tooltip("The strength of the dash. A higher number means a further dash.")]
     [SerializeField] private float dashStrength;
 
+    [Tooltip("The drag of the rigidbody mid dash. Used to slow it down. Will be reset at the end of the dash.")]
+    [SerializeField] private float dashDrag;
+    private float oldDrag;
+
     [Tooltip("The time in seconds to wait before controls are restored to the character.")]
     [SerializeField] private float dashTime;
-
-    private bool canDash = true;
 
     [Tooltip("How intense the arc jump is.")]
     [SerializeField] private float arcForwardForce;
@@ -36,26 +38,22 @@ public class DashAbility : ISpecialAbility
 
     private IEnumerator PerformDash(CharacterMotor characterMotor, object args)
     {
-        if (!canDash)
-            yield break;
+        Vector3 input = characterMotor.LocalMovementDirection;
 
-        canDash = false;
-
-        Vector3 input = (Vector3)args;
+        oldDrag = rb.drag;
+        rb.drag = dashDrag;
 
         //characterMotor.CanMove = false;
         rb.AddForce(input * dashStrength, ForceMode.VelocityChange);
 
         StartCoroutine(ArcJump(characterMotor));
         yield return new WaitForSeconds(dashTime);
-        canDash = true;
 
-        if (!arcJumped)
-        {
-            print("no arc jump, so moving!");
-            //characterMotor.CanMove = true;
-            characterMotor.ResetVelocity();
-        }
+        //if (!arcJumped)
+        //{
+        //    print("no arc jump, so moving!");
+        //    rb.drag = 0;
+        //}
     }
 
     private IEnumerator ArcJump(CharacterMotor characterMotor)
@@ -71,50 +69,19 @@ public class DashAbility : ISpecialAbility
                 print("ARCING");
                 arcJumped = true;
 
+                rb.drag = oldDrag;
                 rb.AddForce((transform.forward * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
 
                 yield return new WaitForSeconds(dashTime);
 
                 arcJumped = false;
-
-                //enableCollisionCheck = true;
-                //while (!colliding)
-                //{
-                //    //if (characterMotor.CanMove)
-                //    //    break;
-
-                //    yield return null;
-                //}
-
-                //print("DONE ARCING");
-                //arcJumped = false;
-                //enableCollisionCheck = false;
-                //characterMotor.ResetVelocity();
-                //characterMotor.overrideCollisionCheck = false;
-
-
-                ////characterMotor.CanMove = true;
-
-                //// Return from the coroutine.
-                //yield break;
             }
 
             yield return null;
         }
+
+        rb.drag = oldDrag;
     }
-
-    //private bool colliding = false;
-    //private bool enableCollisionCheck = false;
-    //private void OnCollisionEnter()
-    //{
-    //    if (enableCollisionCheck)
-    //        colliding = true;
-    //}
-
-    //private void OnCollisionExit()
-    //{
-    //    colliding = false;
-    //}
 
     #region --- **OLD** Dash Implementation 2: Reenable player control once velocity is 0 ---
     //[Header("Drag and Angular Drag")]

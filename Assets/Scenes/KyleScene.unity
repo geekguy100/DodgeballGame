@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78132adaf27b4f247b559296187aedd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 0}
+  settings: {fileID: 11400000, guid: b5042518c91492d4297f31e2d246b9ff, type: 2}
 --- !u!1 &2064774174
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +906,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 543974347, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.615
+      objectReference: {fileID: 0}
     - target: {fileID: 14093986297819442, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -963,6 +967,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: dashDrag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: dashTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: dashStrength
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 995158171247249096, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player

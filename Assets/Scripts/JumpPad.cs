@@ -13,11 +13,26 @@ public class JumpPad : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        CharacterMotor motor = collision.transform.GetComponent<CharacterMotor>();
-        if (motor != null)
-        {
-            Rigidbody rb = motor.gameObject.GetComponent<Rigidbody>();
+        Rigidbody rb = collision.transform.GetComponent<Rigidbody>();
 
+        if (rb != null)
+        {
+            Vector3 force;
+
+            CharacterMotor motor = collision.transform.GetComponent<CharacterMotor>();
+            if (motor != null)
+            {
+                // The player's direction of movement.
+                Vector3 input = motor.LocalMovementDirection;
+
+                force = (input * settings.ForwardForce) + (Vector3.up * settings.UpwardForce);
+            }
+            // If there is no input and we want to bounce some random object, 
+            // bounce it in its forward direction.
+            else
+                force = (transform.forward * settings.ForwardForce) + (Vector3.up * settings.UpwardForce);
+
+            rb.AddForce(force, ForceMode.Impulse);
         }
     }
 }

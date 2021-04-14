@@ -17,7 +17,6 @@ public class ObstructionCheck : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * rayLength);
         // If we hit a wall, hide it from the camera view.
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayLength, whatIsObstruction))
         {

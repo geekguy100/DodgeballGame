@@ -10,6 +10,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Jump Pad Settings", menuName = "Scriptable Objects/Jump Pad Settings")]
 public class JumpPadSettings : ScriptableObject
 {
-    public float forwardForce;
-    public float upwardForce;
+    [SerializeField] private float forwardForce;
+    [SerializeField] private float upwardForce;
+
+    public float ForwardForce { get { return forwardForce; } }
+    public float UpwardForce { get { return upwardForce; } }
 }
