@@ -12,13 +12,21 @@ public class ObstructionCheck : MonoBehaviour
     [SerializeField] private LayerMask whatIsObstruction;
     [SerializeField] private float rayLength = 2f;
 
+    [Tooltip("Where the ray should end.")]
+    [SerializeField] private Transform target;
+
     private Transform obstructionObject;
     private Obstruction obstruction;
 
     private void Update()
     {
+        Vector3 direction = (target.position - transform.position).normalized;
+        float dist = Vector3.Distance(transform.position, target.position);
+
+        Debug.DrawRay(transform.position, direction * dist);
+
         // If we hit a wall, hide it from the camera view.
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayLength, whatIsObstruction))
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, dist, whatIsObstruction))
         {
             // If we already hit the same thing, return.
             if (hit.transform == obstruction)
