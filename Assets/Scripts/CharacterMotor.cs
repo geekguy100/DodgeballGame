@@ -118,6 +118,9 @@ public class CharacterMotor : MonoBehaviour
     {
         ++currentJumps;
 
+        if(currentJumps > 1)
+            ResetVelocity();
+
         Vector3 vel = rb.velocity;
         float newVel = Mathf.Sqrt(2 * 9.81f * jumpHeight);
 
