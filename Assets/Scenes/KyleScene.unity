@@ -967,22 +967,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: dashDrag
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: dashTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: dashStrength
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 995158171247249096, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player

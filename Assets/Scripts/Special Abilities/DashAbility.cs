@@ -38,6 +38,7 @@ public class DashAbility : ISpecialAbility
 
     private IEnumerator PerformDash(CharacterMotor characterMotor, object args)
     {
+        characterMotor.ResetVelocity();
         Vector3 input = characterMotor.LocalMovementDirection;
 
         oldDrag = rb.drag;
@@ -69,8 +70,10 @@ public class DashAbility : ISpecialAbility
                 print("ARCING");
                 arcJumped = true;
 
+                Vector3 input = characterMotor.LocalMovementDirection;
+
                 rb.drag = oldDrag;
-                rb.AddForce((transform.forward * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
+                rb.AddForce((input * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
 
                 yield return new WaitForSeconds(dashTime);
 
