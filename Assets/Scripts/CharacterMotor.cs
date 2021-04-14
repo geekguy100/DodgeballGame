@@ -99,7 +99,7 @@ public class CharacterMotor : MonoBehaviour
 
     public void ResetVelocity()
     {
-        Debug.Log("PLAYER VELOCITY RESET");
+        //Debug.Log("PLAYER VELOCITY RESET");
         rb.velocity = Vector3.zero;
     }
 
@@ -143,7 +143,7 @@ public class CharacterMotor : MonoBehaviour
     {
         if (col.gameObject.layer != LayerMask.NameToLayer("IgnoreVelocity") && rb.velocity != Vector3.zero)
         {
-            print(col.gameObject.name);
+            //print(col.gameObject.name);
             ResetVelocity();
         }
     }

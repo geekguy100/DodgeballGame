@@ -9,6 +9,7 @@ TagManager:
   - CameraShaker
   - Respawn3
   - Respawn1
+  - Dodgeball
   layers:
   - Default
   - TransparentFX
