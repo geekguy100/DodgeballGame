@@ -78,5 +78,6 @@ public abstract class BallInteractor : MonoBehaviour
         StopAllCoroutines();
         windUp = false;
         throwForce = settings.throwForce;
+        currentWindUpTime = 0f;
     }
 }
