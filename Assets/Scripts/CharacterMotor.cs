@@ -144,7 +144,7 @@ public class CharacterMotor : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.layer != LayerMask.NameToLayer("IgnoreVelocity") && rb.velocity != Vector3.zero)
+        if (!col.gameObject.CompareTag("IgnoreVelocity") && rb.velocity != Vector3.zero)
         {
             //print(col.gameObject.name);
             ResetVelocity();
