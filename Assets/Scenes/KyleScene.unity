@@ -342,11 +342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c62e17728fda74ea2848fb6f72e386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &785448190 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1854250288, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-  m_PrefabInstance: {fileID: 995158172445663490}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &804422158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1210,26 +1205,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 995158171247249104, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: maxAimLookAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 995158171247249104, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: minAimLookAngle
-      value: 330
-      objectReference: {fileID: 0}
-    - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: look
-      value: 
-      objectReference: {fileID: 337191315}
-    - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: ballHolder
-      value: 
-      objectReference: {fileID: 785448190}
-    - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: ballInstantiationSpot
-      value: 
-      objectReference: {fileID: 785448190}
     - target: {fileID: 1462734210434215200, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: reticle
       value: 
@@ -1242,10 +1217,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1054011897}
-    - target: {fileID: 3330840956242446309, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.861
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
 --- !u!1001 &3568814992497744127
