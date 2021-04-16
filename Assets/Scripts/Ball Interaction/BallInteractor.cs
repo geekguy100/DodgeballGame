@@ -45,7 +45,7 @@ public abstract class BallInteractor : MonoBehaviour
         if (windUp)
         {
             // If we hit something within the ray's length.
-            if(Physics.Raycast(look.position, look.forward, out RaycastHit hit, rayLength))
+            if(Physics.Raycast(ball.position, look.forward, out RaycastHit hit, rayLength))
             {
                 hitPos = hit.point;
                 DrawPath(hitPos);
