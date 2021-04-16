@@ -70,5 +70,4 @@ public class PlayerAimController : MonoBehaviour
     {
         return aiming;
     }
-
 }

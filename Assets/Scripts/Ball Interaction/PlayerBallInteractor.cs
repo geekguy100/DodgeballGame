@@ -9,6 +9,13 @@ using UnityEngine;
 
 public class PlayerBallInteractor : BallInteractor
 {
+    // IDEA: Use Sebastian's method, but instead of pre-defning the position use a raycast from the followTarget transform
+    // and take the hit as the position. Then when we throw the ball we get the velocity required to launch and hit that target.
+   
+    // PROS: Realistic, and can implement a projectile arc.
+    // CONS: Need to figure out how to incorporate the 'wind up' mechanic into this. Because this approach would take a distance from the player (ray length)
+    // and that is the sole determinant of whether or not they'll hit their target
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Dodgeball"))
@@ -17,8 +24,10 @@ public class PlayerBallInteractor : BallInteractor
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (Input.GetMouseButtonDown(0) && HasBall())
             WindUpBall();
         else if (windUp && Input.GetMouseButtonUp(0))

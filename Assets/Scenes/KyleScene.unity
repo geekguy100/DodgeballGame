@@ -1205,6 +1205,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: h
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: rayLength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1462734210434215200, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: reticle
       value: 

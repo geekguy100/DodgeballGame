@@ -26,7 +26,7 @@ public class DashAbility : ISpecialAbility
 
     private Rigidbody rb;
 
-    private bool arcJumped = false;
+    //private bool arcJumped = false;
 
     protected override void ExecuteAbility(CharacterMotor characterMotor, object args)
     {
@@ -68,7 +68,7 @@ public class DashAbility : ISpecialAbility
             if (Input.GetButtonDown("Jump"))
             {
                 print("ARCING");
-                arcJumped = true;
+                //arcJumped = true;
 
                 Vector3 input = characterMotor.LocalMovementDirection;
 
@@ -77,7 +77,7 @@ public class DashAbility : ISpecialAbility
 
                 yield return new WaitForSeconds(dashTime);
 
-                arcJumped = false;
+                //arcJumped = false;
             }
 
             yield return null;

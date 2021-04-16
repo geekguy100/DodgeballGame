@@ -10,7 +10,7 @@ using UnityEngine;
 public class ObstructionCheck : MonoBehaviour
 {
     [SerializeField] private LayerMask whatIsObstruction;
-    [SerializeField] private float rayLength = 2f;
+    //[SerializeField] private float rayLength = 2f;
 
     [Tooltip("Where the ray should end.")]
     [SerializeField] private Transform target;
