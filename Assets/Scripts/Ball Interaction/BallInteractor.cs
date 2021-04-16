@@ -15,10 +15,16 @@ public abstract class BallInteractor : MonoBehaviour
     [SerializeField] private Transform ballHolder;
     [SerializeField] private Transform ballInstantiationSpot;
 
+    [Tooltip("Transform that determines the rotation of the ball.")]
+    [SerializeField] private Transform look;
+
     [SerializeField] private BallThrowerSettings settings;
     private float throwForce;
     private float currentWindUpTime;
     protected bool windUp = false;
+
+    private bool canPickUpBall = true;
+
 
     private void Awake()
     {
@@ -27,7 +33,7 @@ public abstract class BallInteractor : MonoBehaviour
 
     protected void AssignBall(Rigidbody ball)
     {
-        if (this.ball != null)
+        if (this.ball != null || !canPickUpBall)
             return;
 
         this.ball = ball;
@@ -40,14 +46,22 @@ public abstract class BallInteractor : MonoBehaviour
     {
         if (ball == null)
             return;
+
+        canPickUpBall = false;
         StopAllCoroutines();
         ball.transform.parent = null;
         ball.isKinematic = false;
         ball.transform.position = ballInstantiationSpot.position;
-        ball.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
         ball = null;
-
         StopWindUp();
+    }
+
+    private IEnumerator ResetPickup()
+    {
+        yield return new WaitForSeconds(0.25f);
+        print("RESET");
+        canPickUpBall = true;
     }
 
     protected void WindUpBall()
@@ -81,6 +95,7 @@ public abstract class BallInteractor : MonoBehaviour
     protected void StopWindUp()
     {
         StopAllCoroutines();
+        StartCoroutine(ResetPickup());
         windUp = false;
         throwForce = settings.initialThrowForce;
         currentWindUpTime = 0f;

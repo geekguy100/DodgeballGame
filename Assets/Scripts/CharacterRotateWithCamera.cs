@@ -21,17 +21,33 @@ public class CharacterRotateWithCamera : MonoBehaviour
     [Tooltip("The sensitivity of the camera's rotation.")]
     [SerializeField] private float sensitivity;
 
+    [Header("Main Look Angles")]
     [Range(270f, 360f)]
     [SerializeField] private float minLookAngle;
+    private float baseMinLookAngle;
 
     [Range(0, 90f)]
     [SerializeField] private float maxLookAngle;
+    private float baseMaxLookAngle;
+
+    [Header("Aiming Look Angles")]
+    [Range(270f, 360f)]
+    [SerializeField] private float minAimLookAngle;
+
+    [Range(0, 90f)]
+    [SerializeField] private float maxAimLookAngle;
 
     private void Awake()
     {
         rotater = GetComponent<CharacterRotater>();
         motor = GetComponent<CharacterMotor>();
         aimController = GetComponent<PlayerAimController>();
+    }
+
+    private void Start()
+    {
+        baseMinLookAngle = minLookAngle;
+        baseMaxLookAngle = maxLookAngle;
     }
 
     private void Update()
@@ -82,30 +98,15 @@ public class CharacterRotateWithCamera : MonoBehaviour
         }
     }
 
-    private void RotateFollowTransform()
+    public void SwitchToAimAngles()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        minLookAngle = minAimLookAngle;
+        maxLookAngle = maxAimLookAngle;
+    }
 
-        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseX * sensitivity, Vector3.up);
-        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseY * sensitivity, Vector3.right);
-
-        var angles = followTransform.transform.localEulerAngles;
-        angles.z = 0;
-
-        var angle = followTransform.transform.localEulerAngles.x;
-
-        //Clamp the Up/Down rotation
-        if (angle > 180 && angle < 340)
-        {
-            angles.x = 340;
-        }
-        else if (angle < 180 && angle > 40)
-        {
-            angles.x = 40;
-        }
-
-
-        followTransform.transform.localEulerAngles = angles;
+    public void ResetAngles()
+    {
+        minLookAngle = baseMinLookAngle;
+        maxLookAngle = baseMaxLookAngle;
     }
 }

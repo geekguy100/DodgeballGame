@@ -195,6 +195,8 @@ MonoBehaviour:
   sensitivity: 5
   minLookAngle: 348
   maxLookAngle: 60
+  minAimLookAngle: 330
+  maxAimLookAngle: 60
 --- !u!114 &1462734210434215200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   aimCamera: {fileID: 0}
+  reticle: {fileID: 0}
   switchWaitTime: 0.25
 --- !u!114 &675756314
 MonoBehaviour:
@@ -241,7 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballHolder: {fileID: 1854250288}
-  ballInstantiationSpot: {fileID: 3330840956242446309}
+  ballInstantiationSpot: {fileID: 1854250288}
+  look: {fileID: 337191315}
   settings: {fileID: 11400000, guid: 01a076b55397bf44ba0777ec32514f96, type: 2}
 --- !u!1 &995158171959724844
 GameObject:
@@ -297,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8610006141235964533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.361, z: 0.414}
+  m_LocalPosition: {x: -0.1, y: 0.361, z: 0.861}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 995158171247249100}

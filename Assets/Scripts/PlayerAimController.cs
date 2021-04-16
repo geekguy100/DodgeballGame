@@ -8,14 +8,22 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterRotateWithCamera))]
 public class PlayerAimController : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject aimCamera;
     [SerializeField] private GameObject reticle;
 
+    private CharacterRotateWithCamera playerRotator;
+
     [SerializeField] private float switchWaitTime = 0.25f;
     private bool aiming;
+
+    private void Awake()
+    {
+        playerRotator = GetComponent<CharacterRotateWithCamera>();
+    }
 
     private void Start()
     {
@@ -29,7 +37,7 @@ public class PlayerAimController : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(SwitchToAim());
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonDown(1))
         {
             StopAllCoroutines();
             StartCoroutine(SwitchToMain());
@@ -43,6 +51,8 @@ public class PlayerAimController : MonoBehaviour
         aiming = false;
         mainCamera.SetActive(true);
         aimCamera.SetActive(false);
+
+        playerRotator.ResetAngles();
     }
 
     private IEnumerator SwitchToAim()
@@ -52,6 +62,8 @@ public class PlayerAimController : MonoBehaviour
         yield return new WaitForSeconds(switchWaitTime);
         mainCamera.SetActive(false);
         aimCamera.SetActive(true);
+
+        playerRotator.SwitchToAimAngles();
     }
 
     public bool IsAiming()

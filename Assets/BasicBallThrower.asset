@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104db5e98b213c041b38fd3665f7d555, type: 3}
   m_Name: BasicBallThrower
   m_EditorClassIdentifier: 
-  initialThrowForce: 5
-  maxThrowForce: 15
-  windUpTime: 3
+  initialThrowForce: 40
+  maxThrowForce: 50
+  windUpTime: 2
