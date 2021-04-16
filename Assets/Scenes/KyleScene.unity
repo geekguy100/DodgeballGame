@@ -529,7 +529,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108529867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 239.88007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 173226492}
@@ -537,7 +537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108529869
@@ -1096,10 +1096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 14093986297819441, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
-      propertyPath: m_DefaultBlend.m_Time
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 14093986297819442, guid: 0bb0d14533e381f448e416a2aada0b5d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1234,6 +1230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6562232215790592316, guid: 185b151858db2224b925517acc986c8e, type: 3}
+      propertyPath: AimTargetReticle
+      value: 
+      objectReference: {fileID: 1108529868}
     - target: {fileID: 7680679421148674500, guid: 185b151858db2224b925517acc986c8e, type: 3}
       propertyPath: m_Follow
       value: 
@@ -1297,24 +1297,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7680679421148674501, guid: 185b151858db2224b925517acc986c8e, type: 3}
   m_PrefabInstance: {fileID: 3568814992497744127}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6562232215790592316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562232215790592314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2588cc5dedbb75e49a44aada63f7b939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AimCollisionFilter:
-    serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: 
-  AimDistance: 200
-  AimTargetReticle: {fileID: 1108529868}
 --- !u!1001 &6562232215965249677
 PrefabInstance:
   m_ObjectHideFlags: 0

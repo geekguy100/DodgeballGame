@@ -22,7 +22,7 @@ public abstract class BallInteractor : MonoBehaviour
 
     private void Awake()
     {
-        throwForce = settings.throwForce;
+        throwForce = settings.initialThrowForce;
     }
 
     protected void AssignBall(Rigidbody ball)
@@ -66,11 +66,14 @@ public abstract class BallInteractor : MonoBehaviour
             yield break;
 
         windUp = true;
+
+        float diff = settings.maxThrowForce - settings.initialThrowForce;
         while (currentWindUpTime < settings.windUpTime)
         {
             currentWindUpTime += Time.deltaTime;
-            throwForce += (currentWindUpTime);
-            Debug.Log(currentWindUpTime);
+            throwForce = settings.initialThrowForce + (diff * currentWindUpTime) / settings.windUpTime;
+            print(throwForce);
+            //Debug.Log(currentWindUpTime);
             yield return null;
         }
     }
@@ -79,7 +82,7 @@ public abstract class BallInteractor : MonoBehaviour
     {
         StopAllCoroutines();
         windUp = false;
-        throwForce = settings.throwForce;
+        throwForce = settings.initialThrowForce;
         currentWindUpTime = 0f;
     }
 }

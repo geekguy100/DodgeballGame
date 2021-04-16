@@ -10,6 +10,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ball Thrower Settings", menuName = "Scriptable Objects/Ball Thrower Settings")]
 public class BallThrowerSettings : ScriptableObject
 {
-    public float throwForce;
+    public float initialThrowForce;
+    public float maxThrowForce;
     public float windUpTime;
 }
