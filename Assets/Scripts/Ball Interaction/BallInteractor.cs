@@ -30,6 +30,8 @@ public abstract class BallInteractor : MonoBehaviour
     [Header("BALL THROWING")]
     [SerializeField] private float rayLength;
 
+    [SerializeField] private float arcAmount;
+
 
     private Vector3 hitPos;
 
@@ -47,6 +49,8 @@ public abstract class BallInteractor : MonoBehaviour
             // If we hit something within the ray's length.
             if(Physics.Raycast(ball.position, look.forward, out RaycastHit hit, rayLength))
             {
+                float diff = hit.point.y - ball.position.y;
+                h = diff * Mathf.Sign(diff) + arcAmount;
                 hitPos = hit.point;
                 DrawPath(hitPos);
             }
