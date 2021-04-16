@@ -99,7 +99,7 @@ public class CharacterMotor : MonoBehaviour
 
     public void ResetVelocity()
     {
-        //Debug.Log("PLAYER VELOCITY RESET");
+        Debug.Log("PLAYER VELOCITY RESET");
         rb.velocity = Vector3.zero;
     }
 
@@ -118,7 +118,10 @@ public class CharacterMotor : MonoBehaviour
     {
         ++currentJumps;
 
-        ResetVelocity();
+        // Only reset the velocity if we're already in the air.
+        // Helps prevent strange arc jumps.
+        if (!grounded)
+            ResetVelocity();
 
         Vector3 vel = rb.velocity;
         float newVel = Mathf.Sqrt(2 * 9.81f * jumpHeight);
