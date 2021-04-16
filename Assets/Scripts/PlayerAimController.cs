@@ -13,6 +13,7 @@ public class PlayerAimController : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject aimCamera;
     [SerializeField] private float switchWaitTime = 0.25f;
+    private bool aiming;
 
 
     void Update()
@@ -32,15 +33,22 @@ public class PlayerAimController : MonoBehaviour
     private IEnumerator SwitchToMain()
     {
         yield return new WaitForSeconds(switchWaitTime);
+        aiming = false;
         mainCamera.SetActive(true);
         aimCamera.SetActive(false);
     }
 
     private IEnumerator SwitchToAim()
     {
+        aiming = true;
         yield return new WaitForSeconds(switchWaitTime);
         mainCamera.SetActive(false);
         aimCamera.SetActive(true);
+    }
+
+    public bool IsAiming()
+    {
+        return aiming;
     }
 
 }

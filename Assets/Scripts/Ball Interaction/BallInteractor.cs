@@ -13,6 +13,7 @@ public abstract class BallInteractor : MonoBehaviour
     private Rigidbody ball = null;
 
     [SerializeField] private Transform ballHolder;
+    [SerializeField] private Transform ballInstantiationSpot;
 
     [SerializeField] private BallThrowerSettings settings;
     private float throwForce;
@@ -42,6 +43,7 @@ public abstract class BallInteractor : MonoBehaviour
         StopAllCoroutines();
         ball.transform.parent = null;
         ball.isKinematic = false;
+        ball.transform.position = ballInstantiationSpot.position;
         ball.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         ball = null;
 

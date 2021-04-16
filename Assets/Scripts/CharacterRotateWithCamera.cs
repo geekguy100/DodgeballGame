@@ -9,10 +9,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterRotater))]
 [RequireComponent(typeof(CharacterMotor))]
+[RequireComponent(typeof(PlayerAimController))]
 public class CharacterRotateWithCamera : MonoBehaviour
 {
     private CharacterRotater rotater;
     private CharacterMotor motor;
+    private PlayerAimController aimController;
 
     [SerializeField] private Transform followTransform;
 
@@ -29,6 +31,7 @@ public class CharacterRotateWithCamera : MonoBehaviour
     {
         rotater = GetComponent<CharacterRotater>();
         motor = GetComponent<CharacterMotor>();
+        aimController = GetComponent<PlayerAimController>();
     }
 
     private void Update()
@@ -68,8 +71,8 @@ public class CharacterRotateWithCamera : MonoBehaviour
         #endregion
 
 
-
-        if (motor.IsMoving())
+        // Rotate the player if they are moving, aiming, or both.
+        if (motor.IsMoving() || aimController.IsAiming())
         {
             //Set the player rotation based on the look transform
             transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
