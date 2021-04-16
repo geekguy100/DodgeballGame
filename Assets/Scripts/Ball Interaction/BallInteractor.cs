@@ -31,6 +31,8 @@ public abstract class BallInteractor : MonoBehaviour
     [SerializeField] private float rayLength;
 
 
+    private Vector3 hitPos;
+
     private void Awake()
     {
         throwForce = settings.initialThrowForce;
@@ -45,7 +47,8 @@ public abstract class BallInteractor : MonoBehaviour
             // If we hit something within the ray's length.
             if(Physics.Raycast(look.position, look.forward, out RaycastHit hit, rayLength))
             {
-                DrawPath(hit.point);
+                hitPos = hit.point;
+                DrawPath(hitPos);
             }
         }
     }
@@ -72,7 +75,8 @@ public abstract class BallInteractor : MonoBehaviour
         ball.transform.parent = null;
         ball.isKinematic = false;
         ball.transform.position = ballInstantiationSpot.position;
-        ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
+        //ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
+        ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
         ball = null;
         StopWindUp();
     }
