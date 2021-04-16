@@ -67,7 +67,7 @@ public class DashAbility : ISpecialAbility
             currentTime += Time.deltaTime;
             if (Input.GetButtonDown("Jump"))
             {
-                print("ARCING");
+                //print("ARCING");
                 //arcJumped = true;
 
                 Vector3 input = characterMotor.LocalMovementDirection;

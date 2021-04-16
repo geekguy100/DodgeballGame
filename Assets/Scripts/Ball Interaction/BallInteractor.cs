@@ -32,8 +32,10 @@ public abstract class BallInteractor : MonoBehaviour
 
     [SerializeField] private float arcAmount;
 
+    [SerializeField] private LineRenderer lineRenderer;
 
     private Vector3 hitPos;
+    private bool raycastHit;
 
     private void Awake()
     {
@@ -47,13 +49,15 @@ public abstract class BallInteractor : MonoBehaviour
         if (windUp)
         {
             // If we hit something within the ray's length.
-            if(Physics.Raycast(ball.position, look.forward, out RaycastHit hit, rayLength))
+            if (Physics.Raycast(ball.position + look.forward * 2f, look.forward, out RaycastHit hit, rayLength))
             {
                 float diff = hit.point.y - ball.position.y;
                 h = diff * Mathf.Sign(diff) + arcAmount;
                 hitPos = hit.point;
                 DrawPath(hitPos);
             }
+
+            print("HIT POS: " + hitPos);
         }
     }
 
@@ -129,6 +133,7 @@ public abstract class BallInteractor : MonoBehaviour
         windUp = false;
         throwForce = settings.initialThrowForce;
         currentWindUpTime = 0f;
+        lineRenderer.enabled = false;
     }
 
     #endregion
@@ -164,16 +169,23 @@ public abstract class BallInteractor : MonoBehaviour
 
     void DrawPath(Vector3 position)
     {
+        if (!lineRenderer.enabled)
+            lineRenderer.enabled = true;
+
         LaunchData launchData = CalculateLaunchData(position);
         Vector3 previousDrawPoint = ball.position;
 
         int resolution = 30;
+        lineRenderer.positionCount = resolution;
+
         for (int i = 1; i <= resolution; i++)
         {
             float simulationTime = i / (float)resolution * launchData.timeToTarget;
             Vector3 displacement = launchData.initialVelocity * simulationTime + Vector3.up * gravity * simulationTime * simulationTime / 2f;
             Vector3 drawPoint = ball.position + displacement;
-            Debug.DrawLine(previousDrawPoint, drawPoint, Color.green);
+            lineRenderer.SetPosition(i - 1, drawPoint);
+
+            //Debug.DrawLine(previousDrawPoint, drawPoint, Color.green);
             previousDrawPoint = drawPoint;
         }
     }

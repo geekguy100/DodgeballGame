@@ -211,6 +211,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   aimCamera: {fileID: 0}
   reticle: {fileID: 0}
+  useReticle: 0
   switchWaitTime: 0.25
 --- !u!114 &675756314
 MonoBehaviour:
@@ -247,6 +248,8 @@ MonoBehaviour:
   look: {fileID: 337191315}
   settings: {fileID: 11400000, guid: 01a076b55397bf44ba0777ec32514f96, type: 2}
   rayLength: 900
+  arcAmount: 0
+  lineRenderer: {fileID: 0}
   h: 5
 --- !u!1 &995158171959724844
 GameObject:

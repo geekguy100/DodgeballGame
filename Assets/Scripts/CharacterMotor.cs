@@ -99,7 +99,7 @@ public class CharacterMotor : MonoBehaviour
 
     public void ResetVelocity()
     {
-        Debug.Log("PLAYER VELOCITY RESET");
+        //Debug.Log("PLAYER VELOCITY RESET");
         rb.velocity = Vector3.zero;
     }
 
