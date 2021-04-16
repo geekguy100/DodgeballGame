@@ -86,7 +86,6 @@ public class CharacterRotateWithCamera : MonoBehaviour
 
         #endregion
 
-
         // Rotate the player if they are moving, aiming, or both.
         if (motor.IsMoving() || aimController.IsAiming())
         {
@@ -95,6 +94,12 @@ public class CharacterRotateWithCamera : MonoBehaviour
 
             //reset the y rotation of the look transform because rotating the player will already 0 it out!
             followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            transform.forward = -transform.forward;
+            followTransform.forward = transform.forward;
         }
     }
 
