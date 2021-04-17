@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44f7513edbc75b243aa8d59d8952cf3c
+guid: d5f6c4f9202ecd64e8e51ae1f6aa321b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Flat
-    second: {fileID: 2100000, guid: 6de6c8b0e0690844d820fc7165324fc0, type: 2}
+      name: Plane_Refreshed_baked
+    second: {fileID: 2100000, guid: 34acd3b064619cf4b8e84299dcd99299, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
