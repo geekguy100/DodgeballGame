@@ -7483,6 +7483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 995158171247249106, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: jumpUIAnim
+      value: 
+      objectReference: {fileID: 1030987179}
     - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: lineRenderer
       value: 

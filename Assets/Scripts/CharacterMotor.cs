@@ -55,6 +55,9 @@ public class CharacterMotor : MonoBehaviour
     private Rigidbody rb;
     private CharacterAudioManager audioManager;
 
+    [Header("Misc")]
+    [SerializeField] private AbilityUIElement jumpUIAnim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,6 +75,7 @@ public class CharacterMotor : MonoBehaviour
             grounded = true;
             currentJumps = 0;
             Instantiate(landParticles, groundCheck.position + Vector3.up * 0.5f, Quaternion.identity);
+            jumpUIAnim.AbilityUsed(maxJumps);
             audioManager.PlayLandSFX();
         }
         else if (grounded && !touchingGround)
@@ -119,6 +123,7 @@ public class CharacterMotor : MonoBehaviour
         if (currentJumps < maxJumps)
         {
             PerformJump();
+            jumpUIAnim?.AbilityUsed(maxJumps - currentJumps);
         }
     }
 

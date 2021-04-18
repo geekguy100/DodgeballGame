@@ -27,7 +27,8 @@ public class AbilityUIElement : MonoBehaviour
         if (popupText != null)
         {
             StopAllCoroutines();
-            StartCoroutine(WaitThenChangeText(usesLeft));
+            popupText.text = "x" + usesLeft;
+            //StartCoroutine(WaitThenChangeText(usesLeft));
         }
     }
 
