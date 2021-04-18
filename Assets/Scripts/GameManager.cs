@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        throw new System.NotImplementedException();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Title");
     }
 
     public void Reload()

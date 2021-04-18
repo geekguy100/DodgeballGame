@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         UIManager.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/18/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Manages updating and displaying UI in the game.
 *****************************************************************************/
 using UnityEngine;
 using TMPro;
