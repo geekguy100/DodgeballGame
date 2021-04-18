@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
                 // Adding a random force in the direction the ball was thrown in order to get varying moving parts.
                 #endregion
-                float randomForce = Random.Range(50f, 70f);
+                float randomForce = Random.Range(30f, 50f);
                 rb.AddForce(collision.relativeVelocity.normalized * randomForce, ForceMode.VelocityChange);
             }
 

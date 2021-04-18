@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         LockCursor(true);
+        GameStats.Init();
     }
 
     private void LockCursor(bool locked)
