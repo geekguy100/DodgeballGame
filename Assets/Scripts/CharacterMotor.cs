@@ -15,6 +15,8 @@ public class CharacterMotor : MonoBehaviour
     [Tooltip("How fast the character moves.")]
     [SerializeField] private float movementSpeed;
 
+    [SerializeField] private GameObject landParticles;
+
     // True if the character is on the ground.
     private bool grounded = false;
     public bool Grounded { get { return grounded; } }
@@ -65,6 +67,7 @@ public class CharacterMotor : MonoBehaviour
         {
             grounded = true;
             currentJumps = 0;
+            Instantiate(landParticles, groundCheck.position + Vector3.up * 0.5f, Quaternion.identity);
         }
         else if (grounded && !touchingGround)
             grounded = false;
