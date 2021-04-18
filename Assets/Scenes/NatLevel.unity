@@ -7710,6 +7710,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 264626498}
+    - target: {fileID: 1462734210434215200, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: useReticle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
 --- !u!4 &852273156 stripped

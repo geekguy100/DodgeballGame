@@ -19,8 +19,10 @@ public class PlayerBallInteractor : BallInteractor
     //Added by Ein
     Animator animator;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         //Added by Ein
         animator = GetComponentInChildren<Animator>();
     }

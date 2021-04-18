@@ -45,8 +45,9 @@ public abstract class BallInteractor : MonoBehaviour
 
     private Transform target;
 
+    private Vector3 screenCenter;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         audioManager = GetComponent<CharacterAudioManager>();
 
@@ -54,13 +55,22 @@ public abstract class BallInteractor : MonoBehaviour
         gravity = Physics.gravity.y;
     }
 
+    protected virtual void Start()
+    {
+        print("SCREEN CENTER = " + screenCenter);
+    }
+
     protected virtual void Update()
     {
         // Draw the path the ball will take if we're winding up.
         if (windUp)
         {
+            screenCenter = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
+            Debug.DrawRay(screenCenter, look.forward * rayLength, Color.green);
+
             // We found an enemy, so that is our current target.
-            if (Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy))
+            if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/ 
+                Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength, whatIsEnemy))
             {
                 target = hit.transform.GetChild(0);
                 //hitPos = hit.transform.position;
