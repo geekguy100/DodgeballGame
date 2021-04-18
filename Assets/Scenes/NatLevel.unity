@@ -7327,6 +7327,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: uiElement
+      value: 
+      objectReference: {fileID: 1339622277}
     - target: {fileID: 241551125153020911, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00018300032
@@ -8807,6 +8811,7 @@ GameObject:
   - component: {fileID: 1030987176}
   - component: {fileID: 1030987177}
   - component: {fileID: 1030987178}
+  - component: {fileID: 1030987179}
   m_Layer: 5
   m_Name: DoubleJump
   m_TagString: Untagged
@@ -8880,6 +8885,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1030987179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030987175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1962f2c3b9233df419b0d3212310810a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupText: {fileID: 1821931986}
 --- !u!1001 &1034918233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11184,6 +11202,7 @@ GameObject:
   - component: {fileID: 1339622274}
   - component: {fileID: 1339622275}
   - component: {fileID: 1339622276}
+  - component: {fileID: 1339622277}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -11257,6 +11276,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1339622277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339622273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1962f2c3b9233df419b0d3212310810a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupText: {fileID: 0}
 --- !u!1001 &1343834401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13721,6 +13753,8 @@ MonoBehaviour:
   scoreText: {fileID: 1910376633}
   pauseMenu: {fileID: 327602486}
   winPanel: {fileID: 362575100}
+  doubleJumpAnim: {fileID: 0}
+  dashAnim: {fileID: 0}
 --- !u!1001 &1578989134
 PrefabInstance:
   m_ObjectHideFlags: 0

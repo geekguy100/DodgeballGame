@@ -16,6 +16,8 @@ public abstract class ISpecialAbility : MonoBehaviour
     private CharacterAudioManager audioManager;
     [SerializeField] private AudioClip abilitySFX;
 
+    [SerializeField] private AbilityUIElement uiElement;
+
     // True if the character can use their special ability.
     private bool canUseAbility = true;
 
@@ -35,6 +37,7 @@ public abstract class ISpecialAbility : MonoBehaviour
         {
             ExecuteAbility(characterMotor, args);
             audioManager?.PlayOneShot(abilitySFX);
+            uiElement.AbilityUsed();
             StartCoroutine(Cooldown());
         }
     }
@@ -43,8 +46,10 @@ public abstract class ISpecialAbility : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
+        uiElement.AbilityCooldown(cooldownTime);
         canUseAbility = false;
         yield return new WaitForSeconds(cooldownTime);
         canUseAbility = true;
+        uiElement.CooldownComplete();
     }
 }
