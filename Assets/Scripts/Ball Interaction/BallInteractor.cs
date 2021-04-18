@@ -29,13 +29,14 @@ public abstract class BallInteractor : MonoBehaviour
 
     [Header("BALL THROWING")]
     [SerializeField] private float rayLength;
-
     [SerializeField] private float arcAmount;
-
     [SerializeField] private LineRenderer lineRenderer;
 
     private Vector3 hitPos;
     private bool raycastHit;
+    private Vector3 launchVelocity;
+    private bool doneWindingUp = false;
+
 
     private void Awake()
     {
@@ -55,6 +56,11 @@ public abstract class BallInteractor : MonoBehaviour
                 h = diff * Mathf.Sign(diff) + arcAmount;
                 hitPos = hit.point;
                 DrawPath(hitPos);
+            }
+
+            if (doneWindingUp)
+            {
+                launchVelocity = CalculateLaunchData(hitPos).initialVelocity;
             }
 
             print("HIT POS: " + hitPos);
@@ -84,7 +90,8 @@ public abstract class BallInteractor : MonoBehaviour
         ball.isKinematic = false;
         ball.transform.position = ballInstantiationSpot.position;
         //ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
-        ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
+        //ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
+        ball.velocity = launchVelocity;
         ball = null;
         StopWindUp();
     }
@@ -101,15 +108,20 @@ public abstract class BallInteractor : MonoBehaviour
 
         windUp = true;
 
-        float diff = settings.maxThrowForce - settings.initialThrowForce;
+        //float diff = settings.maxThrowForce - settings.initialThrowForce;
         while (currentWindUpTime < settings.windUpTime)
         {
             currentWindUpTime += Time.deltaTime;
-            throwForce = settings.initialThrowForce + (diff * currentWindUpTime) / settings.windUpTime;
+            //throwForce = settings.initialThrowForce + (diff * currentWindUpTime) / settings.windUpTime;
+
+            launchVelocity = Vector3.Lerp(Vector3.zero, CalculateLaunchData(hitPos).initialVelocity, currentWindUpTime / settings.windUpTime);
+
             //print(throwForce);
             //Debug.Log(currentWindUpTime);
             yield return null;
         }
+
+        doneWindingUp = true;
     }
     #endregion
 
@@ -131,7 +143,9 @@ public abstract class BallInteractor : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(ResetPickup());
         windUp = false;
+        doneWindingUp = false;
         throwForce = settings.initialThrowForce;
+        launchVelocity = Vector3.zero;
         currentWindUpTime = 0f;
         lineRenderer.enabled = false;
     }
@@ -180,8 +194,8 @@ public abstract class BallInteractor : MonoBehaviour
 
         for (int i = 1; i <= resolution; i++)
         {
-            float simulationTime = i / (float)resolution * launchData.timeToTarget;
-            Vector3 displacement = launchData.initialVelocity * simulationTime + Vector3.up * gravity * simulationTime * simulationTime / 2f;
+            float simulationTime = i / (float)resolution * settings.windUpTime;
+            Vector3 displacement = launchVelocity * simulationTime + Vector3.up * gravity * simulationTime * simulationTime / 2f;
             Vector3 drawPoint = ball.position + displacement;
             lineRenderer.SetPosition(i - 1, drawPoint);
 
