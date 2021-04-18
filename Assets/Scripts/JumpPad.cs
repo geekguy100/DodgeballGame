@@ -10,6 +10,14 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] private JumpPadSettings settings;
+    [SerializeField] private AudioClip sfx;
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -34,6 +42,8 @@ public class JumpPad : MonoBehaviour
                 force = (transform.forward * settings.ForwardForce) + (Vector3.up * settings.UpwardForce);
 
             rb.AddForce(force, ForceMode.Impulse);
+
+            audioSource.PlayOneShot(sfx);
         }
     }
 }

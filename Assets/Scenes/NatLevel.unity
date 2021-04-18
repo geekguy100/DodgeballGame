@@ -6764,18 +6764,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 898226432176213414, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 2037b8a7f1e11b1439c2e26c1e6cf7c0, type: 2}
-    - target: {fileID: 995158171247249097, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_Height
-      value: 2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 995158171247249097, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6824,10 +6812,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 995158171247249106, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: landParticles
-      value: 
-      objectReference: {fileID: 4176048982633745109, guid: 6f986b821ffbf51409a7ac3ac02724de, type: 3}
     - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: lineRenderer
       value: 
@@ -6844,22 +6828,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 264626498}
-    - target: {fileID: 1813411343407404219, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6527696058435704796, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6527696058435704796, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6527696058435704796, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
 --- !u!4 &852273156 stripped
