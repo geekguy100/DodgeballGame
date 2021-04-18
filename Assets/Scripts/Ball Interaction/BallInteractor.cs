@@ -8,9 +8,11 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterAudioManager))]
 public abstract class BallInteractor : MonoBehaviour
 {
     private Rigidbody ball = null;
+    private CharacterAudioManager audioManager;
 
     [SerializeField] private Transform ballHolder;
     [SerializeField] private Transform ballInstantiationSpot;
@@ -40,6 +42,8 @@ public abstract class BallInteractor : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GetComponent<CharacterAudioManager>();
+
         throwForce = settings.initialThrowForce;
         gravity = Physics.gravity.y;
     }
@@ -93,6 +97,9 @@ public abstract class BallInteractor : MonoBehaviour
         //ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
         ball.velocity = launchVelocity;
         ball = null;
+
+        audioManager.PlayThrowSFX();
+
         StopWindUp();
     }
 

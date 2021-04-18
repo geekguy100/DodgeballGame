@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         CharacterAudioManager.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/18/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Manages playing SFX related to a character and a character's actions.
 *****************************************************************************/
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class CharacterAudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip landSFX;
+    [SerializeField] private AudioClip throwSFX;
 
     private void Awake()
     {
@@ -21,5 +22,10 @@ public class CharacterAudioManager : MonoBehaviour
     public void PlayLandSFX()
     {
         audioSource.PlayOneShot(landSFX);
+    }
+
+    public void PlayThrowSFX()
+    {
+        audioSource.PlayOneShot(throwSFX);
     }
 }

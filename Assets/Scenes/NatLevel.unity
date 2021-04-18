@@ -6764,6 +6764,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 727823498781864089, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: throwSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 5fd0835481cf8ea4cb50ecf28156afe4, type: 3}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player
