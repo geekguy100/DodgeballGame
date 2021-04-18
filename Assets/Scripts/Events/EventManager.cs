@@ -13,6 +13,9 @@ public static class EventManager
     public static Action<bool> OnGamePause;
     public static Action OnGameWin;
 
+    public static Action<bool> OnPlayerJump;
+    public static Action OnPlayerDash;
+
     public static void EnemyHit()
     {
         OnEnemyHit?.Invoke();
@@ -26,5 +29,15 @@ public static class EventManager
     public static void GameWin()
     {
         OnGameWin?.Invoke();
+    }
+
+    public static void PlayerJump(bool maxJumps)
+    {
+        OnPlayerJump?.Invoke(maxJumps);
+    }
+
+    public static void PlayerDash()
+    {
+        OnPlayerDash?.Invoke();
     }
 }

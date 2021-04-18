@@ -15,11 +15,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject winPanel;
 
+    [SerializeField] private Animator doubleJumpAnim;
+    [SerializeField] private Animator dashAnim;
+
     private void OnEnable()
     {
         EventManager.OnEnemyHit += UpdateScoreText;
         EventManager.OnGamePause += TogglePauseMenu;
         EventManager.OnGameWin += ShowWinPanel;
+
+        EventManager.OnPlayerJump += PlayJumpAnim;
+        EventManager.OnPlayerDash += PlayDashAnim;
     }
 
     private void OnDisable()
@@ -27,6 +33,9 @@ public class UIManager : MonoBehaviour
         EventManager.OnEnemyHit -= UpdateScoreText;
         EventManager.OnGamePause -= TogglePauseMenu;
         EventManager.OnGameWin -= ShowWinPanel;
+
+        EventManager.OnPlayerJump -= PlayJumpAnim;
+        EventManager.OnPlayerDash -= PlayDashAnim;
     }
 
     private void Start()
@@ -54,5 +63,15 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         obj.SetActive(false);
+    }
+
+    private void PlayJumpAnim(bool maxJumps)
+    {
+
+    }
+
+    private void PlayDashAnim()
+    {
+
     }
 }
