@@ -15,6 +15,8 @@ public class CharacterRotateWithCamera : MonoBehaviour
     private CharacterRotater rotater;
     private CharacterMotor motor;
     private PlayerAimController aimController;
+    private int x_invertModifier = 1;
+    private int y_invertModifier = 1;
 
     [SerializeField] private Transform followTransform;
 
@@ -50,10 +52,20 @@ public class CharacterRotateWithCamera : MonoBehaviour
         baseMaxLookAngle = maxLookAngle;
     }
 
+    public void InvertMouseX(bool invert)
+    {
+        x_invertModifier = invert ? -1 : 1;
+    }
+
+    public void InvertMouseY(bool invert)
+    {
+        y_invertModifier = invert ? -1 : 1;
+    }
+
     private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Mouse X") * x_invertModifier;
+        float mouseY = Input.GetAxis("Mouse Y") * y_invertModifier;
 
         #region --- Horizontal Camera Rotation ---
 
