@@ -11,6 +11,7 @@ TagManager:
   - Respawn1
   - Dodgeball
   - IgnoreVelocity
+  - Enemy
   layers:
   - Default
   - TransparentFX

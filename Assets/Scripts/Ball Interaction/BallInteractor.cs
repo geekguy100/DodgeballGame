@@ -63,7 +63,7 @@ public abstract class BallInteractor : MonoBehaviour
                 launchVelocity = CalculateLaunchData(hitPos).initialVelocity;
             }
 
-            print("HIT POS: " + hitPos);
+            //print("HIT POS: " + hitPos);
         }
     }
 
