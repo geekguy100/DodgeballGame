@@ -12,21 +12,26 @@ public class GameManager : MonoBehaviour
 {
     private bool paused = false;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            paused = !paused;
-            Time.timeScale = System.Convert.ToInt16(!paused);
-            LockCursor(!paused);
-            EventManager.OnGamePause(paused);
-        }
-    }
-
     private void Start()
     {
         LockCursor(true);
         GameStats.Init();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseGame();
+        }
+    }
+
+    public void TogglePauseGame()
+    {
+        paused = !paused;
+        Time.timeScale = System.Convert.ToInt16(!paused);
+        LockCursor(!paused);
+        EventManager.OnGamePause(paused);
     }
 
     private void LockCursor(bool locked)
