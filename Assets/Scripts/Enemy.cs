@@ -10,6 +10,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject metarig;
+    [SerializeField] private GameObject particles;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
                 rb.AddForce(collision.relativeVelocity.normalized * randomForce, ForceMode.VelocityChange);
             }
 
+            Instantiate(particles, transform);
             GameStats.EnemyHit();
             EventManager.EnemyHit();
         }

@@ -1098,8 +1098,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6829817385675037086}
   - component: {fileID: 6431944856148273854}
+  - component: {fileID: 1501495938503121909}
   m_Layer: 0
-  m_Name: Chalky
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1137,6 +1138,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1501495938503121909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161964520236565284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50575dd11e013b644a0a00792eda57c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metarig: {fileID: 784029187675051625}
+  particles: {fileID: 253568418114500594, guid: a6417ebad1b899246b5e0d80d2c7a81f, type: 3}
 --- !u!1 &6212367494032294657
 GameObject:
   m_ObjectHideFlags: 0
