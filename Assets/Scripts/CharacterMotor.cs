@@ -8,6 +8,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterAudioManager))]
+[RequireComponent(typeof(ISpecialAbility))]
 public class CharacterMotor : MonoBehaviour
 {
     #region --- Movement Fields ---
@@ -51,11 +53,13 @@ public class CharacterMotor : MonoBehaviour
     // The special ability attached to this character.
     private ISpecialAbility specialAbility;
     private Rigidbody rb;
+    private CharacterAudioManager audioManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         specialAbility = GetComponent<ISpecialAbility>();
+        audioManager = GetComponent<CharacterAudioManager>();
     }
 
     private void Update()
@@ -68,6 +72,7 @@ public class CharacterMotor : MonoBehaviour
             grounded = true;
             currentJumps = 0;
             Instantiate(landParticles, groundCheck.position + Vector3.up * 0.5f, Quaternion.identity);
+            audioManager.PlayLandSFX();
         }
         else if (grounded && !touchingGround)
             grounded = false;

@@ -11,15 +11,15 @@ using UnityEngine;
 public class CharacterAudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    [SerializeField] private AudioClip jumpPadSFX;
+    [SerializeField] private AudioClip landSFX;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayJumpPadSFX()
+    public void PlayLandSFX()
     {
-        audioSource.PlayOneShot(jumpPadSFX);
+        audioSource.PlayOneShot(landSFX);
     }
 }
