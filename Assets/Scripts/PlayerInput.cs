@@ -13,10 +13,18 @@ public class PlayerInput : MonoBehaviour
     private CharacterMotor motor;
     private Vector3 input;
 
+    //Added by Ein
+    Animator animator;
 
     private void Awake()
     {
         motor = GetComponent<CharacterMotor>();
+    }
+
+    private void Start()
+    {
+        //Added by Ein
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -31,6 +39,15 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("SpecialAbility"))
             motor.PerformSpecialAbility();
+
+
+
+
+        //Added by Ein
+        animator.SetFloat("VerticalMovement", v);
+        animator.SetFloat("HorizontalMovement", h);
+        animator.SetBool("Dance", Input.GetKey(KeyCode.V));
+        animator.SetBool("Scroomble", Input.GetKey(KeyCode.B));
     }
 
     private void FixedUpdate()
