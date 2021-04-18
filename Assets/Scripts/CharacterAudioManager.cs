@@ -28,4 +28,9 @@ public class CharacterAudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(throwSFX);
     }
+
+    public void PlayOneShot(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 }

@@ -13,8 +13,18 @@ public abstract class ISpecialAbility : MonoBehaviour
     [Tooltip("The time to wait in seconds before able to use ability again.")]
     [SerializeField] protected float cooldownTime;
 
+    private CharacterAudioManager audioManager;
+    [SerializeField] private AudioClip abilitySFX;
+
     // True if the character can use their special ability.
     private bool canUseAbility = true;
+
+    private void Awake()
+    {
+        audioManager = GetComponent<CharacterAudioManager>();
+    }
+
+
 
     /// <summary>
     /// Performs the special ability.
@@ -24,6 +34,7 @@ public abstract class ISpecialAbility : MonoBehaviour
         if (canUseAbility)
         {
             ExecuteAbility(characterMotor, args);
+            audioManager?.PlayOneShot(abilitySFX);
             StartCoroutine(Cooldown());
         }
     }

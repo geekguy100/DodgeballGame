@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1
+  abilitySFX: {fileID: 8300000, guid: fa81e5299771b5f4393a20348fff46bf, type: 3}
   dashStrength: 150
   dashDrag: 20
   dashTime: 0.3
