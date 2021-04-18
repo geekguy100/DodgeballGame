@@ -30,14 +30,20 @@ public abstract class BallInteractor : MonoBehaviour
     private float gravity;
 
     [Header("BALL THROWING")]
-    [SerializeField] private float rayLength;
+    [SerializeField] private float initialRayLength;
+    [SerializeField] private float maxRayLength;
+    private float rayLength;
+
     [SerializeField] private float arcAmount;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private LayerMask whatIsEnemy;
 
-    private Vector3 hitPos;
+    //private Vector3 hitPos;
     private bool raycastHit;
     private Vector3 launchVelocity;
     private bool doneWindingUp = false;
+
+    private Transform target;
 
 
     private void Awake()
@@ -53,21 +59,21 @@ public abstract class BallInteractor : MonoBehaviour
         // Draw the path the ball will take if we're winding up.
         if (windUp)
         {
-            // If we hit something within the ray's length.
-            if (Physics.Raycast(ball.position + look.forward * 2f, look.forward, out RaycastHit hit, rayLength))
+            // We found an enemy, so that is our current target.
+            if (Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy))
             {
-                float diff = hit.point.y - ball.position.y;
-                h = diff * Mathf.Sign(diff) + arcAmount;
-                hitPos = hit.point;
-                DrawPath(hitPos);
+                target = hit.transform.GetChild(0);
+                //hitPos = hit.transform.position;
             }
 
-            if (doneWindingUp)
-            {
-                launchVelocity = CalculateLaunchData(hitPos).initialVelocity;
-            }
+            DrawLine();
 
             //print("HIT POS: " + hitPos);
+        }
+        else if (rayLength != 0f)
+        {
+            rayLength = 0f;
+            SetLineColor(Color.white);
         }
     }
 
@@ -93,9 +99,17 @@ public abstract class BallInteractor : MonoBehaviour
         ball.transform.parent = null;
         ball.isKinematic = false;
         ball.transform.position = ballInstantiationSpot.position;
-        //ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
+
+        if (target != null)
+        {
+            Vector3 dir = (target.position - ball.position).normalized;
+            ball.AddForce(dir * throwForce, ForceMode.Impulse);
+        }
+        else
+            ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
+
         //ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
-        ball.velocity = launchVelocity;
+        //ball.velocity = launchVelocity;
         ball = null;
 
         audioManager.PlayThrowSFX();
@@ -115,13 +129,17 @@ public abstract class BallInteractor : MonoBehaviour
 
         windUp = true;
 
-        //float diff = settings.maxThrowForce - settings.initialThrowForce;
+        float diff = settings.maxThrowForce - settings.initialThrowForce;
+        float rayDiff = maxRayLength - initialRayLength;
         while (currentWindUpTime < settings.windUpTime)
         {
             currentWindUpTime += Time.deltaTime;
-            //throwForce = settings.initialThrowForce + (diff * currentWindUpTime) / settings.windUpTime;
+            throwForce = settings.initialThrowForce + (diff * currentWindUpTime) / settings.windUpTime;
+            
+            // Increase the ray over time.
+            rayLength = initialRayLength + (rayDiff * currentWindUpTime) / settings.windUpTime;
 
-            launchVelocity = Vector3.Lerp(Vector3.zero, CalculateLaunchData(hitPos).initialVelocity, currentWindUpTime / settings.windUpTime);
+            //launchVelocity = Vector3.Lerp(Vector3.zero, CalculateLaunchData(hitPos).initialVelocity, currentWindUpTime / settings.windUpTime);
 
             //print(throwForce);
             //Debug.Log(currentWindUpTime);
@@ -155,11 +173,12 @@ public abstract class BallInteractor : MonoBehaviour
         launchVelocity = Vector3.zero;
         currentWindUpTime = 0f;
         lineRenderer.enabled = false;
+        target = null;
     }
 
     #endregion
 
-    #region --- Launching the Dodgeball ---
+    #region --- OLD ____ Launching the Dodgeball ---
 
     public struct LaunchData
     {
@@ -210,6 +229,40 @@ public abstract class BallInteractor : MonoBehaviour
             previousDrawPoint = drawPoint;
         }
     }
-
     #endregion
+
+    void DrawLine()
+    {
+        lineRenderer.enabled = true;
+
+        if (lineRenderer.positionCount != 2)
+            lineRenderer.positionCount = 2;
+
+        if (target == null)
+        {
+            lineRenderer.SetPosition(0, ball.position);
+            lineRenderer.SetPosition(1, ball.position + look.forward * rayLength);
+        }
+        else
+        {
+            if (Vector3.Distance(ball.position, target.position) > rayLength)
+            {
+                SetLineColor(Color.white);
+                target = null;
+                lineRenderer.SetPosition(0, ball.position);
+                lineRenderer.SetPosition(1, ball.position + look.forward * rayLength);
+            }
+            else
+            {
+                SetLineColor(Color.red);
+                lineRenderer.SetPosition(0, ball.position);
+                lineRenderer.SetPosition(1, target.position);
+            }
+        }
+    }
+
+    void SetLineColor(Color color)
+    {
+        lineRenderer.material.color = color;
+    }
 }
