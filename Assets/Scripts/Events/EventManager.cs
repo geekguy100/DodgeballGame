@@ -11,6 +11,7 @@ public static class EventManager
 {
     public static Action OnEnemyHit;
     public static Action<bool> OnGamePause;
+    public static Action OnGameWin;
 
     public static void EnemyHit()
     {
@@ -20,5 +21,10 @@ public static class EventManager
     public static void GamePause(bool paused)
     {
         OnGamePause?.Invoke(paused);
+    }
+
+    public static void GameWin()
+    {
+        OnGameWin?.Invoke();
     }
 }

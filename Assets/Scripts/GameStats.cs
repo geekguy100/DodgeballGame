@@ -25,5 +25,7 @@ public static class GameStats
     public static void EnemyHit()
     {
         enemiesHit++;
+        if (enemiesHit >= totalEnemies)
+            EventManager.GameWin();
     }
 }
