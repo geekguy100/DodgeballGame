@@ -72,6 +72,7 @@ public class DashAbility : ISpecialAbility
 
                 Vector3 input = characterMotor.LocalMovementDirection;
 
+                characterMotor.ResetVelocity();
                 rb.drag = oldDrag;
                 rb.AddForce((input * arcForwardForce) + (Vector3.up * arcUpwardsForce), ForceMode.VelocityChange);
 

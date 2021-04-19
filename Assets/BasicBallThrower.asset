@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BasicBallThrower
   m_EditorClassIdentifier: 
   initialThrowForce: 40
-  maxThrowForce: 50
-  windUpTime: 2
+  maxThrowForce: 55
+  windUpTime: 1
