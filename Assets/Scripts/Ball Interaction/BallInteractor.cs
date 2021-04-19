@@ -66,7 +66,6 @@ public abstract class BallInteractor : MonoBehaviour
         if (windUp)
         {
             screenCenter = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
-            Debug.DrawRay(screenCenter, look.forward * rayLength, Color.green);
 
             // We found an enemy, so that is our current target.
             if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/ 
@@ -116,7 +115,10 @@ public abstract class BallInteractor : MonoBehaviour
             ball.AddForce(dir * throwForce, ForceMode.Impulse);
         }
         else
+        {
             ball.AddForce(look.forward * throwForce, ForceMode.Impulse);
+        }
+
 
         //ball.velocity = CalculateLaunchData(hitPos).initialVelocity;
         //ball.velocity = launchVelocity;
@@ -255,7 +257,7 @@ public abstract class BallInteractor : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(ball.position, target.position) > rayLength)
+            if (Vector3.Distance(screenCenter, target.position) > rayLength)
             {
                 SetLineColor(Color.white);
                 target = null;
