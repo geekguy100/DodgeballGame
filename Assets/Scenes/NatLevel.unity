@@ -15670,6 +15670,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 852273156}
+    - target: {fileID: 7680679421148674500, guid: 185b151858db2224b925517acc986c8e, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7680679421148674501, guid: 185b151858db2224b925517acc986c8e, type: 3}
       propertyPath: m_Name
       value: Aim Camera
