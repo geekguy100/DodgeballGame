@@ -116,7 +116,8 @@ public abstract class BallInteractor : MonoBehaviour
         }
         else
         {
-            Vector3 dir = ((screenCenter + look.forward * rayLength) - ball.position).normalized;
+            //Vector3 dir = ((screenCenter + look.forward * rayLength) - ball.position).normalized;
+            Vector3 dir = (look.forward);
             ball.AddForce(dir * throwForce, ForceMode.Impulse);
         }
 

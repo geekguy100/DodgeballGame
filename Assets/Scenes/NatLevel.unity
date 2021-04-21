@@ -5331,7 +5331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6829817385675037086, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.51
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 6829817385675037086, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7681,6 +7681,10 @@ PrefabInstance:
       propertyPath: jumpUIAnim
       value: 
       objectReference: {fileID: 1030987179}
+    - target: {fileID: 995158171247249106, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: movementSpeed
+      value: 9.25
+      objectReference: {fileID: 0}
     - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: h
       value: 0
