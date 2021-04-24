@@ -12,6 +12,9 @@ using UnityEngine;
 [RequireComponent(typeof(ISpecialAbility))]
 public class CharacterMotor : MonoBehaviour
 {
+    //Added by Ein
+    Animator animator;
+
     #region --- Movement Fields ---
     [Header("Movement")]
     [Tooltip("How fast the character moves.")]
@@ -58,11 +61,20 @@ public class CharacterMotor : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private AbilityUIElement jumpUIAnim;
 
+
+
+    
+
     private void Awake()
     {
+        //Added by Ein
+        animator = GetComponentInChildren<Animator>();
+
         rb = GetComponent<Rigidbody>();
         specialAbility = GetComponent<ISpecialAbility>();
         audioManager = GetComponent<CharacterAudioManager>();
+
+
     }
 
     private void Update()
@@ -80,6 +92,9 @@ public class CharacterMotor : MonoBehaviour
         }
         else if (grounded && !touchingGround)
             grounded = false;
+
+        //added by Ein
+        animator.SetBool("Airborn", !touchingGround);
     }
 
     #region --- Movement ---
@@ -153,7 +168,12 @@ public class CharacterMotor : MonoBehaviour
     public void PerformSpecialAbility()
     {
         if (specialAbility != null)
+        {
             specialAbility.Execute(this, localMovementDirection);
+            animator.SetBool("Dodge", true);
+        }
+
+
     }
     #endregion
 

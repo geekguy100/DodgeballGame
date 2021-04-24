@@ -37,8 +37,19 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             motor.Jump();
 
+
+
         if (Input.GetButtonDown("SpecialAbility"))
+        {
             motor.PerformSpecialAbility();
+        }
+        else
+        {
+            animator.SetBool("Dodge", false);
+        }
+
+
+
 
 
 
