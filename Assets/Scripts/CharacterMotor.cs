@@ -170,7 +170,6 @@ public class CharacterMotor : MonoBehaviour
         if (specialAbility != null)
         {
             specialAbility.Execute(this, localMovementDirection);
-            animator.SetBool("Dodge", true);
         }
 
 

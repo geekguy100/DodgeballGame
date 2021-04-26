@@ -24,15 +24,26 @@ public class DashAbility : ISpecialAbility
     [SerializeField] private float arcForwardForce;
     [SerializeField] private float arcUpwardsForce;
 
+        //Added by Ein
+    Animator animator;
+
     private Rigidbody rb;
 
     //private bool arcJumped = false;
+
+    private void Awake()
+    {
+        //Added by Ein
+        animator = GetComponentInChildren<Animator>();
+    }
+
 
     protected override void ExecuteAbility(CharacterMotor characterMotor, object args)
     {
         if (rb == null)
             rb = characterMotor.GetComponent<Rigidbody>();
 
+        animator.SetBool("Dodge", true);
         StartCoroutine(PerformDash(characterMotor, args));
     }
 
