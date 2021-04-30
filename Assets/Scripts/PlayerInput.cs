@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
         animator.SetFloat("VerticalMovement", v);
         animator.SetFloat("HorizontalMovement", h);
         animator.SetBool("Dance", Input.GetKey(KeyCode.V));
-        animator.SetBool("Scroomble", Input.GetKey(KeyCode.B));
+        animator.SetBool("Dance2", Input.GetKey(KeyCode.B));
     }
 
     private void FixedUpdate()

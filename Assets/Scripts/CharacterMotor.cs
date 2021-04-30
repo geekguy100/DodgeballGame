@@ -94,7 +94,7 @@ public class CharacterMotor : MonoBehaviour
             grounded = false;
 
         //added by Ein
-        animator.SetBool("Airborn", !touchingGround);
+        animator.SetFloat("Airborn", rb.velocity.y);
     }
 
     #region --- Movement ---
