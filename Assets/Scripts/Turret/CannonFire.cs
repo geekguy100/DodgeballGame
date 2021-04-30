@@ -17,6 +17,13 @@ public class CannonFire : ICannonState
     [SerializeField] private Rigidbody dodgeball;
     [SerializeField] private float rotationResetTime = 1f;
 
+    private Quaternion startRotation;
+
+    private void Start()
+    {
+        startRotation = cannon.CannonBody.rotation;
+    }
+
     public override void FireAtTarget(GameObject target)
     {
         throw new System.NotImplementedException();
@@ -74,7 +81,7 @@ public class CannonFire : ICannonState
         while (currentTime < rotationResetTime)
         {
             currentTime += Time.deltaTime;
-            cannon.CannonBody.rotation = Quaternion.Lerp(currentRot, Quaternion.identity, currentTime / rotationResetTime);
+            cannon.CannonBody.rotation = Quaternion.Lerp(currentRot, startRotation, currentTime / rotationResetTime);
             yield return null;
         }
 

@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootForce: 50
-  timeBetweenShots: 0.25
+  timeBetweenShots: 1
   dodgeball: {fileID: 7435743898910989908, guid: 55fb9fffb3b66f646b2f44330e64bc1d, type: 3}
   rotationResetTime: 1
 --- !u!1 &2252060317686555970
