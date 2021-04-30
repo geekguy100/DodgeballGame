@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannonBody: {fileID: 2252060316965240565}
+  _origin: {fileID: 2252060317686555969}
 --- !u!114 &2252060317649887013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +447,6 @@ MonoBehaviour:
   rotationFrequency: 1
   rotationAmplitude: 90
   detectionAngle: 45
-  origin: {fileID: 2252060317686555969}
 --- !u!114 &2252060317649887014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef809bfdcb79534d8143b354cad47b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootForce: 50
+  timeBetweenShots: 0.25
+  dodgeball: {fileID: 7435743898910989908, guid: 55fb9fffb3b66f646b2f44330e64bc1d, type: 3}
   rotationResetTime: 1
 --- !u!1 &2252060317686555970
 GameObject:

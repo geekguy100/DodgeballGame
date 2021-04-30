@@ -10,6 +10,11 @@ using System.Collections;
 
 public class CannonFire : ICannonState
 {
+    [Header("Shooting Fields")]
+    [SerializeField] private float shootForce;
+    [SerializeField] private float timeBetweenShots;
+
+    [SerializeField] private Rigidbody dodgeball;
     [SerializeField] private float rotationResetTime = 1f;
 
     public override void FireAtTarget(GameObject target)
@@ -28,6 +33,7 @@ public class CannonFire : ICannonState
         StopAllCoroutines();
         targetInRange = true;
         StartCoroutine(TrackTarget(target.transform));
+        StartCoroutine(ShootDodgeball());
     }
 
     public override void TargetLost(GameObject target)
@@ -46,6 +52,17 @@ public class CannonFire : ICannonState
             Vector3 vectorToTarget = (target.position - cannon.CannonBody.position);
             cannon.CannonBody.rotation = Quaternion.LookRotation(-vectorToTarget, Vector3.up);
             yield return null;
+        }
+    }
+
+    private IEnumerator ShootDodgeball()
+    {
+        while (targetInRange)
+        {
+            Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
+            db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
+
+            yield return new WaitForSeconds(timeBetweenShots);
         }
     }
 

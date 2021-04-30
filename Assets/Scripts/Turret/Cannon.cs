@@ -11,7 +11,13 @@ using UnityEngine;
 [RequireComponent(typeof(CannonFire))]
 public class Cannon : MonoBehaviour
 {
+    [Header("The Cannon's Body")]
     [SerializeField] private Transform cannonBody;
+
+    [Header("Origin of Detection")]
+    [SerializeField] private Transform _origin;
+    public Transform origin { get { return _origin; } }
+
     public Transform CannonBody { get { return cannonBody; } }
 
     #region --- States and State Methods ---

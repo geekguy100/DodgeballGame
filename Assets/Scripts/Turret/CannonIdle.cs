@@ -16,9 +16,6 @@ public class CannonIdle : ICannonState
 
     [SerializeField] private float detectionAngle = 45f;
 
-    [Header("Origin of Detection")]
-    [SerializeField] private Transform origin;
-
     public override void SurveyArea()
     {
         Debug.Log("[CANNON_IDLE]: Starting area survellience.");
@@ -71,8 +68,8 @@ public class CannonIdle : ICannonState
     {
         if (other.CompareTag("Player") && target == null)
         {
-            Vector3 vectorToPlayer = (other.transform.position - origin.position);
-            float angle = Vector3.Angle(-origin.forward, vectorToPlayer);
+            Vector3 vectorToPlayer = (other.transform.position - cannon.origin.position);
+            float angle = Vector3.Angle(-cannon.origin.forward, vectorToPlayer);
 
             if (angle <= detectionAngle)
             {
