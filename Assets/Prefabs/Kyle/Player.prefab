@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landSFX: {fileID: 8300000, guid: ab6e8f277761c18498939abb378e0fea, type: 3}
   throwSFX: {fileID: 8300000, guid: 5fd0835481cf8ea4cb50ecf28156afe4, type: 3}
+  jumpSFX: {fileID: 0}
 --- !u!82 &3484515662574823684
 AudioSource:
   m_ObjectHideFlags: 0

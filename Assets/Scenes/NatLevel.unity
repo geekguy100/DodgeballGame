@@ -7885,6 +7885,10 @@ PrefabInstance:
       propertyPath: uiElement
       value: 
       objectReference: {fileID: 1339622277}
+    - target: {fileID: 727823498781864089, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: jumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d7562d140c3f258489074bac90993bdf, type: 3}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7941,10 +7945,6 @@ PrefabInstance:
       propertyPath: jumpUIAnim
       value: 
       objectReference: {fileID: 1030987179}
-    - target: {fileID: 995158171247249106, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-      propertyPath: movementSpeed
-      value: 9.25
-      objectReference: {fileID: 0}
     - target: {fileID: 995158172445663492, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: h
       value: 0

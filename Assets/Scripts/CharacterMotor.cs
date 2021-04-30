@@ -144,6 +144,7 @@ public class CharacterMotor : MonoBehaviour
 
     private void PerformJump()
     {
+        audioManager.PlayJumpSFX();
         ++currentJumps;
 
         // Only reset the velocity if we're already in the air.
