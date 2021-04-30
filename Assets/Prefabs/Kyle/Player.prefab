@@ -197,9 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTransform: {fileID: 337191315}
   sensitivity: 5
-  minLookAngle: 348
+  minLookAngle: 318
   maxLookAngle: 60
-  minAimLookAngle: 330
+  minAimLookAngle: 310
   maxAimLookAngle: 60
 --- !u!114 &1462734210434215200
 MonoBehaviour:
@@ -938,6 +938,10 @@ PrefabInstance:
     - target: {fileID: 1320411542853409003, guid: 703f2591f6ecdd2458bc597964de9795, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487054812318594161, guid: 703f2591f6ecdd2458bc597964de9795, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3646396693868516732, guid: 703f2591f6ecdd2458bc597964de9795, type: 3}
       propertyPath: m_LocalPosition.y

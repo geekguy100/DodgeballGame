@@ -21,7 +21,7 @@ public abstract class ISpecialAbility : MonoBehaviour
     // True if the character can use their special ability.
     private bool canUseAbility = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         audioManager = GetComponent<CharacterAudioManager>();
     }

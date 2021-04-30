@@ -31,8 +31,9 @@ public class DashAbility : ISpecialAbility
 
     //private bool arcJumped = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         //Added by Ein
         animator = GetComponentInChildren<Animator>();
     }
