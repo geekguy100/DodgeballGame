@@ -2114,6 +2114,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8062731479919045173, guid: 33c22a0040ca9354db6a77671e799ee8, type: 3}
   m_PrefabInstance: {fileID: 166786686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &172005791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172005793}
+  - component: {fileID: 172005792}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &172005792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172005791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa577d6599c62e34283487467200eccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 3b5fd76063253bb44903cc727b2e9129, type: 2}
+--- !u!4 &172005793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172005791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &177475916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1934709889334822139, guid: 052ba3c428cf7d64eaf4747aa5993d79, type: 3}
@@ -3218,6 +3262,7 @@ GameObject:
   - component: {fileID: 327602489}
   - component: {fileID: 327602488}
   - component: {fileID: 327602490}
+  - component: {fileID: 327602491}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -3315,6 +3360,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &327602491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327602486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2c8e1bd84d6474db976d027d790361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertCamX: {fileID: 2054152740}
+  invertCamY: {fileID: 1646549276}
 --- !u!1001 &337569191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6927,17 +6986,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0852c9727d8bae4ba14ea08a89cc8bc, type: 3}
---- !u!114 &747609144 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 995158171247249104, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
-  m_PrefabInstance: {fileID: 852273155}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7e15472392c8ab41bf73729f113f91f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &750638470
 GameObject:
   m_ObjectHideFlags: 0
@@ -14876,19 +14924,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 747609144}
-        m_TargetAssemblyTypeName: CharacterRotateWithCamera, Assembly-CSharp
-        m_MethodName: InvertMouseY
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1001 &1649462907
 PrefabInstance:
@@ -19095,19 +19131,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 747609144}
-        m_TargetAssemblyTypeName: CharacterRotateWithCamera, Assembly-CSharp
-        m_MethodName: InvertMouseX
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1001 &2058800203
 PrefabInstance:
