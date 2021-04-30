@@ -11,10 +11,20 @@ using System.Collections;
 public class CannonIdle : ICannonState
 {
     [Header("Rotation Fields")]
+    [Tooltip("How quickly the cannon surveys the area (rotation speed).")]
     [SerializeField] private float rotationFrequency;
+
+    [Tooltip("How far the cannon rotates.")]
     [SerializeField] private float rotationAmplitude;
 
+
+    [Header("Cannon Target Detection")]
+    [Tooltip("The cannon's field of view. If a target is within the cannon's boundaries and is at most this angle from " +
+        "the cannon's shooting point, the cannon will begin firing at the target.")]
     [SerializeField] private float detectionAngle = 45f;
+
+    [Tooltip("The layer(s) that identify GameObject's as targets.")]
+    [SerializeField] private LayerMask whatIsTarget;
 
     public override void SurveyArea()
     {
@@ -66,7 +76,7 @@ public class CannonIdle : ICannonState
     private GameObject target;
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && target == null)
+        if ((whatIsTarget == (whatIsTarget | (1 << other.gameObject.layer))) && target == null)
         {
             Vector3 vectorToPlayer = (other.transform.position - cannon.origin.position);
             float angle = Vector3.Angle(-cannon.origin.forward, vectorToPlayer);
