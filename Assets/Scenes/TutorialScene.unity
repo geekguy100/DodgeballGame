@@ -3770,7 +3770,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -11768,7 +11768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jump, Dash, and then Jump Again to perform and Arc-Jump
+  m_text: Dash and quickly Jump again to perform an Arc-Jump.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11831,7 +11831,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 5.6902275, w: 0}
+  m_margin: {x: 1.1559066, y: 0, z: 6.7778654, w: 0.5670986}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11887,17 +11887,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329846268}
-  m_LocalRotation: {x: -0, y: -0.32391745, z: -0, w: 0.94608533}
-  m_LocalPosition: {x: 0, y: 0, z: 146.68097}
+  m_LocalRotation: {x: -0, y: -0.337455, z: -0, w: 0.9413417}
+  m_LocalPosition: {x: 0, y: 0, z: 146.96591}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1615648515}
   m_Father: {fileID: 492557388}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -37.8, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -39.444, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.6284637, y: 24.609066}
+  m_AnchoredPosition: {x: -5.65309, y: 24.609066}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1348119247 stripped
@@ -13409,6 +13409,10 @@ PrefabInstance:
       propertyPath: uiElement
       value: 
       objectReference: {fileID: 1389664109}
+    - target: {fileID: 675756314, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
+      propertyPath: arcUpwardsForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 995158171247249099, guid: 20a278c2094967d4086d9f5f75f4eb81, type: 3}
       propertyPath: m_Name
       value: Player

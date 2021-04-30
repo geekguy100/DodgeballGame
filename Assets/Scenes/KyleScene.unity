@@ -1426,18 +1426,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2252060317649887010, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
-      propertyPath: m_Size.x
-      value: 21.171463
-      objectReference: {fileID: 0}
-    - target: {fileID: 2252060317649887010, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
-      propertyPath: m_Size.z
-      value: 21.350409
-      objectReference: {fileID: 0}
-    - target: {fileID: 2252060317649887010, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2252060317649887011, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
       propertyPath: m_Name
       value: Cannon
