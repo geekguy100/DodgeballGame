@@ -95,6 +95,7 @@ public class CharacterMotor : MonoBehaviour
 
         //added by Ein
         animator.SetFloat("Airborn", rb.velocity.y);
+        print(rb.velocity.y);
     }
 
     #region --- Movement ---
