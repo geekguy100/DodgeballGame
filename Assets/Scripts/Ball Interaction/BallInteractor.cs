@@ -12,7 +12,7 @@ using System.Collections;
 public abstract class BallInteractor : MonoBehaviour
 {
     private Rigidbody ball = null;
-    private CharacterAudioManager audioManager;
+    protected CharacterAudioManager audioManager;
 
     [SerializeField] private Transform ballHolder;
     [SerializeField] private Transform ballInstantiationSpot;
@@ -97,6 +97,8 @@ public abstract class BallInteractor : MonoBehaviour
         this.ball.transform.parent = ballHolder;
         this.ball.transform.localPosition = Vector3.zero;
     }
+
+    public abstract void Targeted();
 
     protected void ThrowBall()
     {

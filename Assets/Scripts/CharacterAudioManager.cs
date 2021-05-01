@@ -15,6 +15,7 @@ public class CharacterAudioManager : MonoBehaviour
     [SerializeField] private AudioClip landSFX;
     [SerializeField] private AudioClip throwSFX;
     [SerializeField] private AudioClip jumpSFX;
+    [SerializeField] private AudioClip targetedSFX;
 
     private void Awake()
     {
@@ -39,5 +40,10 @@ public class CharacterAudioManager : MonoBehaviour
     internal void PlayJumpSFX()
     {
         audioSource.PlayOneShot(jumpSFX, 0.25f);
+    }
+
+    internal void PlayTargetedSFX()
+    {
+        audioSource.PlayOneShot(targetedSFX);
     }
 }

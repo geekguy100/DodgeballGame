@@ -17,16 +17,20 @@ public class CannonFire : ICannonState
     [SerializeField] private Rigidbody dodgeball;
     [SerializeField] private float rotationResetTime = 1f;
 
+    [SerializeField] private LineRenderer lineRenderer;
+
     private Quaternion startRotation;
 
     private void Start()
     {
+        lineRenderer.material.color = Color.red;
         startRotation = cannon.CannonBody.rotation;
     }
 
     public override void FireAtTarget(GameObject target)
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(TrackTarget(target.transform));
+        StartCoroutine(ShootDodgeball(target.transform));
     }
 
     public override void SurveyArea()
@@ -37,10 +41,10 @@ public class CannonFire : ICannonState
     public override void TargetAquired(GameObject target)
     {
         Debug.Log("[CANNON_FIRE]: Target found: " + target.name);
+        target.GetComponent<BallInteractor>().Targeted();
         StopAllCoroutines();
         targetInRange = true;
-        StartCoroutine(TrackTarget(target.transform));
-        StartCoroutine(ShootDodgeball());
+        FireAtTarget(target);
     }
 
     public override void TargetLost(GameObject target)
@@ -54,22 +58,28 @@ public class CannonFire : ICannonState
 
     private IEnumerator TrackTarget(Transform target)
     {
+        lineRenderer.enabled = true;
+        lineRenderer.positionCount = 2;
+
         while (targetInRange)
         {
+            lineRenderer.SetPosition(0, cannon.origin.position);
+            lineRenderer.SetPosition(1, target.position);
             Vector3 vectorToTarget = (target.position - cannon.CannonBody.position);
             cannon.CannonBody.rotation = Quaternion.LookRotation(-vectorToTarget, Vector3.up);
             yield return null;
         }
+
+        lineRenderer.enabled = false;
     }
 
-    private IEnumerator ShootDodgeball()
+    private IEnumerator ShootDodgeball(Transform target)
     {
         while (targetInRange)
         {
+            yield return new WaitForSeconds(timeBetweenShots);
             Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
             db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
-
-            yield return new WaitForSeconds(timeBetweenShots);
         }
     }
 

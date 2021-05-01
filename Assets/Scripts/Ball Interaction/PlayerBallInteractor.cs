@@ -7,6 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterAudioManager))]
 public class PlayerBallInteractor : BallInteractor
 {
     // IDEA: Use Sebastian's method, but instead of pre-defning the position use a raycast from the followTarget transform
@@ -50,5 +51,10 @@ public class PlayerBallInteractor : BallInteractor
         }
         else if (windUp && Input.GetMouseButtonDown(1))
             StopWindUp();
+    }
+
+    public override void Targeted()
+    {
+        audioManager.PlayTargetedSFX();
     }
 }
