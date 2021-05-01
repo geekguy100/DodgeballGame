@@ -77,6 +77,9 @@ public class CharacterMotor : MonoBehaviour
 
     private void Update()
     {
+        if (GameStats.paused)
+            return;
+        
         bool touchingGround = Physics.Linecast(transform.position, groundCheck.position);
 
         // Once we hit the ground, make sure to reset out current jumps.
@@ -93,7 +96,6 @@ public class CharacterMotor : MonoBehaviour
 
         //added by Ein
         animator.SetFloat("Airborn", rb.velocity.y);
-        print(rb.velocity.y);
     }
 
     #region --- Movement ---
@@ -134,6 +136,9 @@ public class CharacterMotor : MonoBehaviour
     #region --- Jumping ---
     public void Jump()
     {
+        if (GameStats.paused)
+            return;
+
         if (currentJumps < maxJumps)
         {
             PerformJump();
@@ -167,6 +172,9 @@ public class CharacterMotor : MonoBehaviour
     #region --- Special (SHIFT Key) Ability ---
     public void PerformSpecialAbility()
     {
+        if (GameStats.paused)
+            return;
+
         if (specialAbility != null)
         {
             specialAbility.Execute(this, localMovementDirection);

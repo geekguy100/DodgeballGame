@@ -52,6 +52,9 @@ public class CharacterRotateWithCamera : MonoBehaviour
 
     private void Update()
     {
+        if (GameStats.paused)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * Settings.s.invertCamXModifier;
         float mouseY = Input.GetAxis("Mouse Y") * Settings.s.invertCamYModifier;
 

@@ -14,9 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject winPanel;
-
-    [SerializeField] private Animator doubleJumpAnim;
-    [SerializeField] private Animator dashAnim;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Timer timer;
 
     private void OnEnable()
     {
@@ -24,8 +23,8 @@ public class UIManager : MonoBehaviour
         EventManager.OnGamePause += TogglePauseMenu;
         EventManager.OnGameWin += ShowWinPanel;
 
-        EventManager.OnPlayerJump += PlayJumpAnim;
-        EventManager.OnPlayerDash += PlayDashAnim;
+        if (timer != null)
+            timer.OnTimerChange += UpdateTimerText;
     }
 
     private void OnDisable()
@@ -34,8 +33,8 @@ public class UIManager : MonoBehaviour
         EventManager.OnGamePause -= TogglePauseMenu;
         EventManager.OnGameWin -= ShowWinPanel;
 
-        EventManager.OnPlayerJump -= PlayJumpAnim;
-        EventManager.OnPlayerDash -= PlayDashAnim;
+        if (timer != null)
+            timer.OnTimerChange -= UpdateTimerText;
     }
 
     private void Start()
@@ -45,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Targets Remaining: " + GameStats.EnemiesHit + " / " + GameStats.TotalEnemies;
+        scoreText.text = GameStats.EnemiesHit + " / " + GameStats.TotalEnemies;
     }
 
     private void TogglePauseMenu(bool paused)
@@ -65,13 +64,8 @@ public class UIManager : MonoBehaviour
         obj.SetActive(false);
     }
 
-    private void PlayJumpAnim(bool maxJumps)
+    private void UpdateTimerText(float value)
     {
-
-    }
-
-    private void PlayDashAnim()
-    {
-
+        timerText.text = string.Format("{0:00.00}s", value);
     }
 }

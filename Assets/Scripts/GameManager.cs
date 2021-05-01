@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public void TogglePauseGame()
     {
         paused = !paused;
+        GameStats.paused = paused;
         Time.timeScale = System.Convert.ToInt16(!paused);
         LockCursor(!paused);
         EventManager.OnGamePause(paused);
@@ -55,12 +56,14 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        GameStats.paused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
     }
 
     public void Reload()
     {
+        GameStats.paused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

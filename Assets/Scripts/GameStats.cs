@@ -15,6 +15,8 @@ public static class GameStats
     private static int totalEnemies;
     public static int TotalEnemies { get { return totalEnemies; } }
 
+    public static bool paused { get; set; }
+
     public static void Init()
     {
         Debug.Log("Game Stats Initialized...");

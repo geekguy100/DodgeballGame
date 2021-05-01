@@ -20,11 +20,6 @@ public static class VFXFactory
             Debug.LogWarning("Could not load VFX! NULL");
         else if (vfx.Length == 0)
             Debug.LogWarning("0 length");
-        else
-        {
-            foreach (Object o in vfx)
-                Debug.Log(o.name);
-        }
     }
 
     public static GameObject GetRandomVFXPrefab()
