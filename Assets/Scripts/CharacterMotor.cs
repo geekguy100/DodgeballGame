@@ -73,8 +73,6 @@ public class CharacterMotor : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         specialAbility = GetComponent<ISpecialAbility>();
         audioManager = GetComponent<CharacterAudioManager>();
-
-
     }
 
     private void Update()

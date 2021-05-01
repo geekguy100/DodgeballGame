@@ -18,6 +18,9 @@ public class HitVFX : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        if (transform.parent != null)
+            Destroy(transform.parent.gameObject);
+        else
+            Destroy(gameObject);
     }
 }
