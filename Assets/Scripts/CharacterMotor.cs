@@ -39,7 +39,6 @@ public class CharacterMotor : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float jumpHeight;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask whatIsGround;
 
     [Header("Double Jumping")]
     [Tooltip("The maximum number of times the character can jump.")]
@@ -64,6 +63,8 @@ public class CharacterMotor : MonoBehaviour
 
     private CharacterStateManager stateManager;
 
+    private PlayerLandShadow landShadow;
+
     
 
     private void Awake()
@@ -76,6 +77,8 @@ public class CharacterMotor : MonoBehaviour
         audioManager = GetComponent<CharacterAudioManager>();
 
         stateManager = GetComponent<CharacterStateManager>();
+
+        landShadow = GetComponentInChildren<PlayerLandShadow>();
     }
 
     private void Update()
@@ -99,6 +102,8 @@ public class CharacterMotor : MonoBehaviour
 
         //added by Ein
         animator.SetFloat("Airborn", rb.velocity.y);
+
+        landShadow?.CheckAndDisplay(grounded);
     }
 
     #region --- Movement ---
