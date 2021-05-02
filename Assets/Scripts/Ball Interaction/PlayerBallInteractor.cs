@@ -34,6 +34,10 @@ public class PlayerBallInteractor : BallInteractor
         {
             AssignBall(other.transform.GetComponent<Rigidbody>());
         }
+        else if (other.transform.CompareTag("EnemyDodgeball"))
+        {
+            print("Hit by enemy ball!");
+        }
     }
 
     protected override void Update()

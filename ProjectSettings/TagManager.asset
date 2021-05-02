@@ -13,6 +13,7 @@ TagManager:
   - IgnoreVelocity
   - Enemy
   - LevitatingBall
+  - EnemyDodgeball
   layers:
   - Default
   - TransparentFX
