@@ -158,9 +158,10 @@ public abstract class BallInteractor : MonoBehaviour
     /// <summary>
     /// Toggles whether or not the character can lock on to a target.
     /// </summary>
-    protected void ToggleLockOn()
+    protected bool ToggleLockOn()
     {
         lockOnEnabled = !lockOnEnabled;
+        return lockOnEnabled;
     }
 
     protected void ThrowBall()

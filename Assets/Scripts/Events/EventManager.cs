@@ -15,6 +15,7 @@ public static class EventManager
 
     public static Action<bool> OnPlayerJump;
     public static Action OnPlayerDash;
+    public static Action<bool> OnPlayerToggleLockOn;
 
     public static void EnemyHit()
     {
@@ -39,5 +40,10 @@ public static class EventManager
     public static void PlayerDash()
     {
         OnPlayerDash?.Invoke();
+    }
+
+    public static void PlayerToggleLockOn(bool enabled)
+    {
+        OnPlayerToggleLockOn?.Invoke(enabled);
     }
 }

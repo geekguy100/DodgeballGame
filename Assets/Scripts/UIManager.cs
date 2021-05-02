@@ -8,6 +8,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Timer timer;
+    [SerializeField] private Image lockOnIcon;
 
     private void OnEnable()
     {
         EventManager.OnEnemyHit += UpdateScoreText;
         EventManager.OnGamePause += TogglePauseMenu;
         EventManager.OnGameWin += ShowWinPanel;
+        EventManager.OnPlayerToggleLockOn += ToggleLockOn;
 
         if (timer != null)
             timer.OnTimerChange += UpdateTimerText;
@@ -67,5 +70,13 @@ public class UIManager : MonoBehaviour
     private void UpdateTimerText(float value)
     {
         timerText.text = string.Format("{0:00.00}s", value);
+    }
+
+    private void ToggleLockOn(bool enabled)
+    {
+        if (enabled)
+            lockOnIcon.color = Color.white;
+        else
+            lockOnIcon.color = Color.black;
     }
 }
