@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metarig: {fileID: 784029187675051625}
-  shooting: 0
+  shooting: 1
   attachedCannon: {fileID: 6791244696366611467}
 --- !u!1 &6212367494032294657
 GameObject:
@@ -1801,7 +1801,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.41
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6791244696913094894
 GameObject:

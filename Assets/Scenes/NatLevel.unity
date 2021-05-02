@@ -911,6 +911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2252060317649887011, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
 --- !u!1001 &52924693
@@ -6080,14 +6084,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579006646}
-  m_LocalRotation: {x: -0, y: 0.692947, z: -0, w: 0.7209886}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -17.028355, y: 27.62, z: -2.1424725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1835525096}
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &593832530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9287,6 +9291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2252060317649887011, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149afe06d84f4d748ada5dfe87bca388, type: 3}
 --- !u!1001 &828432834
@@ -9299,6 +9307,10 @@ PrefabInstance:
     - target: {fileID: 784029187675051625, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501495938503121909, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
+      propertyPath: shooting
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6161964520236565284, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_Name
@@ -22069,6 +22081,10 @@ PrefabInstance:
     - target: {fileID: 784029187675051625, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501495938503121909, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
+      propertyPath: shooting
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6161964520236565284, guid: 42d4dc477a25cd540ae5e765a6d35198, type: 3}
       propertyPath: m_Name
