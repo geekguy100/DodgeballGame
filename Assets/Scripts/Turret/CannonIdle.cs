@@ -55,7 +55,7 @@ public class CannonIdle : ICannonState
     /// </summary>
     private IEnumerator Survey()
     {
-        Vector3 newRot = cannon.CannonBody.eulerAngles;
+        Vector3 newRot = cannon.CannonBody.localEulerAngles;
         float startRotY = newRot.y;
 
         float currentTime = 0f;
@@ -63,7 +63,7 @@ public class CannonIdle : ICannonState
         while (target == null)
         {
             newRot.y = Mathf.Sin(currentTime * rotationFrequency) * rotationAmplitude + startRotY;
-            cannon.CannonBody.eulerAngles = newRot;
+            cannon.CannonBody.localEulerAngles = newRot;
 
             currentTime += Time.deltaTime;
             yield return null;

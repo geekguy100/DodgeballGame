@@ -12,10 +12,14 @@ public class CannonFire : ICannonState
 {
     [Header("Shooting Fields")]
     [SerializeField] private float shootForce;
-    [SerializeField] private float timeBetweenShots;
 
     [SerializeField] private Rigidbody dodgeball;
     [SerializeField] private float rotationResetTime = 1f;
+
+    [Header("Burst Firing")]
+    [SerializeField] private float shotsPerBurst;
+    [SerializeField] private float timeBetweenShots;
+    [SerializeField] private float timeBetweenBursts;
 
     [SerializeField] private LineRenderer lineRenderer;
 
@@ -77,11 +81,16 @@ public class CannonFire : ICannonState
     {
         while (targetInRange)
         {
-            yield return new WaitForSeconds(timeBetweenShots);
-            if (targetInRange)
+            yield return new WaitForSeconds(timeBetweenBursts);
+            for (int i = 0; i < shotsPerBurst; ++i)
             {
-                Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
-                db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
+                if (targetInRange)
+                {
+                    Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
+                    db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
+                }
+
+                yield return new WaitForSeconds(timeBetweenShots);
             }
         }
     }

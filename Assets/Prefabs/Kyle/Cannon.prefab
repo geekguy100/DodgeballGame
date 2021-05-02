@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 2252060316965240566}
   - component: {fileID: 2252060316965240567}
   - component: {fileID: 2252060316965240560}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cannon Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,9 +591,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootForce: 50
-  timeBetweenShots: 1
   dodgeball: {fileID: 7435743898910989908, guid: 3e49005da233dfa44a339f79c085ed17, type: 3}
   rotationResetTime: 1
+  shotsPerBurst: 3
+  timeBetweenShots: 0.3
+  timeBetweenBursts: 1
   lineRenderer: {fileID: 7053734631710076728}
 --- !u!1 &2252060317686555970
 GameObject:
