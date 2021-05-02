@@ -79,6 +79,17 @@ public class CannonFire : ICannonState
 
         while (targetInRange)
         {
+            // We lost line of sight with our target, so stop tracking.
+            if (Physics.Linecast(cannon.origin.position, target.position, out RaycastHit hit))
+            {
+                if (hit.transform != target)
+                {
+                    targetInRange = false;
+                    StartCoroutine(ResetRotation());
+                    yield return null;
+                }
+            }
+
             lineRenderer.SetPosition(0, cannon.origin.position);
             lineRenderer.SetPosition(1, target.position);
             Vector3 vectorToTarget = (target.position - cannon.CannonBody.position);
