@@ -67,8 +67,42 @@ public abstract class BallInteractor : MonoBehaviour
         {
             screenCenter = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
 
+            // If we have a target, perform a linecast to make sure we have line of sight.
+            // If we don't have line of sight (i.e., the our red target line is going through an obstacle,
+            // set target to NULL.
+            if (target != null)
+            {
+                if (Physics.Linecast(ball.position, target.position, out RaycastHit linecastHit))
+                {
+                    print("LINECAST: " + linecastHit.transform.gameObject.name);
+                    // We lost sight of our target, so we set it to null.
+
+                    if (whatIsEnemy == (whatIsEnemy | 1 << linecastHit.transform.gameObject.layer))
+                    {
+                        Transform hitTransform;
+                        if (linecastHit.transform.CompareTag("Enemy"))
+                            hitTransform = linecastHit.transform.GetChild(0);
+                        else
+                            hitTransform = linecastHit.transform;
+                        
+                        if (hitTransform != target)
+                        {
+                            print("TARGET NULL");
+                            target = null;
+                            SetLineColor(Color.white);
+                        }
+                    }
+                    else
+                    {
+                        print("TARGET NULL");
+                        target = null;
+                        SetLineColor(Color.white);
+                    }
+                }
+            }
+
             // We found an enemy, so that is our current target.
-            if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/ 
+            if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/
                 Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength))
             {
                 if (whatIsEnemy == (whatIsEnemy | 1 << hit.transform.gameObject.layer))
