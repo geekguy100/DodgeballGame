@@ -77,6 +77,9 @@ public class PlayerBallInteractor : BallInteractor
             }
             else if (windUp && Input.GetMouseButtonDown(1))
                 StopWindUp();
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+                ToggleLockOn();
         }
 
         if (shouldRagdoll)

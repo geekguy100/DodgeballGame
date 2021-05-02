@@ -48,6 +48,9 @@ public abstract class BallInteractor : MonoBehaviour
 
     private Vector3 screenCenter;
 
+    private bool lockOnEnabled = true;
+
+
     protected virtual void Awake()
     {
         audioManager = GetComponent<CharacterAudioManager>();
@@ -58,7 +61,7 @@ public abstract class BallInteractor : MonoBehaviour
 
     protected virtual void Start()
     {
-        print("SCREEN CENTER = " + screenCenter);
+        //print("SCREEN CENTER = " + screenCenter);
     }
 
     protected virtual void Update()
@@ -71,49 +74,59 @@ public abstract class BallInteractor : MonoBehaviour
             // If we have a target, perform a linecast to make sure we have line of sight.
             // If we don't have line of sight (i.e., the our red target line is going through an obstacle,
             // set target to NULL.
-            if (target != null)
+            
+            if (lockOnEnabled)
             {
-                if (Physics.Linecast(ball.position, target.position, out RaycastHit linecastHit))
+                if (target != null)
                 {
-                    // We lost sight of our target, so we set it to null.
-
-                    if (whatIsEnemy == (whatIsEnemy | 1 << linecastHit.transform.gameObject.layer))
+                    if (Physics.Linecast(ball.position, target.position, out RaycastHit linecastHit))
                     {
-                        Transform hitTransform;
-                        if (linecastHit.transform.CompareTag("Enemy"))
-                            hitTransform = linecastHit.transform.GetChild(0);
-                        else
-                            hitTransform = linecastHit.transform;
-                        
-                        if (hitTransform != target)
+                        // We lost sight of our target, so we set it to null.
+
+                        if (whatIsEnemy == (whatIsEnemy | 1 << linecastHit.transform.gameObject.layer))
                         {
-                            print("TARGET NULL BY " + hitTransform.name);
+                            Transform hitTransform;
+                            if (linecastHit.transform.CompareTag("Enemy"))
+                                hitTransform = linecastHit.transform.GetChild(0);
+                            else
+                                hitTransform = linecastHit.transform;
+
+                            if (hitTransform != target)
+                            {
+                                print("TARGET NULL BY " + hitTransform.name);
+                                target = null;
+                                SetLineColor(Color.white);
+                            }
+                        }
+                        // If we intersected with something that we shouldn''t be ignoring, set target to null.
+                        else /*if (ignoreLineCast != (ignoreLineCast | 1 << linecastHit.transform.gameObject.layer))*/
+                        {
+                            print("TARGET NULL BY " + linecastHit.transform.name);
                             target = null;
                             SetLineColor(Color.white);
                         }
                     }
-                    // If we intersected with something that we shouldn''t be ignoring, set target to null.
-                    else /*if (ignoreLineCast != (ignoreLineCast | 1 << linecastHit.transform.gameObject.layer))*/
+                }
+
+                // We found an enemy, so that is our current target.
+                if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/
+                    Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength))
+                {
+                    if (whatIsEnemy == (whatIsEnemy | 1 << hit.transform.gameObject.layer))
                     {
-                        print("TARGET NULL BY " + linecastHit.transform.name);
-                        target = null;
-                        SetLineColor(Color.white);
+                        if (hit.transform.CompareTag("Enemy"))
+                            target = hit.transform.GetChild(0);
+                        else
+                            target = hit.transform;
+                        //hitPos = hit.transform.position;
                     }
                 }
-            }
 
-            // We found an enemy, so that is our current target.
-            if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/
-                Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength))
+            }
+            else if (target != null)
             {
-                if (whatIsEnemy == (whatIsEnemy | 1 << hit.transform.gameObject.layer))
-                {
-                    if (hit.transform.CompareTag("Enemy"))
-                        target = hit.transform.GetChild(0);
-                    else
-                        target = hit.transform;
-                    //hitPos = hit.transform.position;
-                }
+                target = null;
+                SetLineColor(Color.white);
             }
 
             DrawLine();
@@ -140,6 +153,15 @@ public abstract class BallInteractor : MonoBehaviour
     }
 
     public abstract void Targeted();
+
+
+    /// <summary>
+    /// Toggles whether or not the character can lock on to a target.
+    /// </summary>
+    protected void ToggleLockOn()
+    {
+        lockOnEnabled = !lockOnEnabled;
+    }
 
     protected void ThrowBall()
     {
