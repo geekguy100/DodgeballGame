@@ -167,7 +167,7 @@ public abstract class BallInteractor : MonoBehaviour
     #endregion
 
     #region --- Helper Methods ---
-    protected bool HasBall()
+    public bool HasBall()
     {
         return ball != null;
     }

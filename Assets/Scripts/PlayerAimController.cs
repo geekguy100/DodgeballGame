@@ -9,6 +9,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(CharacterRotateWithCamera))]
+[RequireComponent(typeof(BallInteractor))]
 public class PlayerAimController : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
@@ -17,6 +18,7 @@ public class PlayerAimController : MonoBehaviour
     [SerializeField] private bool useReticle;
 
     private CharacterRotateWithCamera playerRotator;
+    private BallInteractor ballInteractor;
 
     [SerializeField] private float switchWaitTime = 0.25f;
     private bool aiming;
@@ -24,6 +26,7 @@ public class PlayerAimController : MonoBehaviour
     private void Awake()
     {
         playerRotator = GetComponent<CharacterRotateWithCamera>();
+        ballInteractor = GetComponent<BallInteractor>();
     }
 
     private void Start()
@@ -33,7 +36,7 @@ public class PlayerAimController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && ballInteractor.HasBall())
         {
             StopAllCoroutines();
             StartCoroutine(SwitchToAim());
