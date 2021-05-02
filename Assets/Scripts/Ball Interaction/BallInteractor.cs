@@ -178,7 +178,7 @@ public abstract class BallInteractor : MonoBehaviour
         if (target != null)
         {
             Vector3 dir = (target.position - ball.position).normalized;
-            ball.AddForce(dir * throwForce, ForceMode.Impulse);
+            ball.AddForce(dir * throwForce * 1.2f, ForceMode.Impulse);
         }
         else
         {
