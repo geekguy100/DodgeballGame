@@ -20,4 +20,5 @@ public abstract class ICannonState : MonoBehaviour
     public abstract void FireAtTarget(GameObject target);
     public abstract void TargetLost(GameObject target);
     public abstract void TargetAquired(GameObject target);
+    public abstract void OnAttacked();
 }

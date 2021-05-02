@@ -60,4 +60,10 @@ public class Cannon : MonoBehaviour
         currentState = idleState;
         SurveyArea();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Dodgeball"))
+            currentState.OnAttacked();
+    }
 }

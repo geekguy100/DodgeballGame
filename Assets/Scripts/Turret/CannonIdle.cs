@@ -50,6 +50,11 @@ public class CannonIdle : ICannonState
         Debug.LogWarning("[CANNON_IDLE]: We don't have a target to begin with!");
     }
 
+    public override void OnAttacked()
+    {
+        Debug.Log("[CANNON_IDLE]: Not attacking, so cannot be attacked.");
+    }
+
     /// <summary>
     /// Rotates the cannon in search of a target.
     /// </summary>

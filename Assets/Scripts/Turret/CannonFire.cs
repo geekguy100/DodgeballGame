@@ -57,8 +57,20 @@ public class CannonFire : ICannonState
         StartCoroutine(ResetRotation());
     }
 
+    public override void OnAttacked()
+    {
+        targetInRange = false;
+        StartCoroutine(WaitThenReset());
+    }
+
 
     // Helper methods
+
+    private IEnumerator WaitThenReset()
+    {
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(ResetRotation());
+    }
 
     private IEnumerator TrackTarget(Transform target)
     {
