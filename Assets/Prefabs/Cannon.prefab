@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 2252060317649887015}
   - component: {fileID: 2252060317649887013}
   - component: {fileID: 2252060317649887014}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2252060318176578501}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Inner Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

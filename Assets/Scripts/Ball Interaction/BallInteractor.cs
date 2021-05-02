@@ -71,7 +71,10 @@ public abstract class BallInteractor : MonoBehaviour
             if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/ 
                 Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength, whatIsEnemy))
             {
-                target = hit.transform.GetChild(0);
+                if (hit.transform.CompareTag("Enemy"))
+                    target = hit.transform.GetChild(0);
+                else
+                    target = hit.transform;
                 //hitPos = hit.transform.position;
             }
 
