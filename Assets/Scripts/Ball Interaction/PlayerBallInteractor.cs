@@ -7,6 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterStateManager))]
 [RequireComponent(typeof(CharacterAudioManager))]
 public class PlayerBallInteractor : BallInteractor
 {
@@ -19,6 +20,22 @@ public class PlayerBallInteractor : BallInteractor
     
     //Added by Ein
     Animator animator;
+
+    [SerializeField] private GameObject ragdoll;
+    [SerializeField] private Rigidbody ragdollSpine;
+    [SerializeField] private GameObject animatedChalky;
+    private bool shouldRagdoll = false;
+    private float currentTime;
+    [SerializeField] private float ragdollTime;
+
+    private CharacterStateManager stateManager;
+    private Vector3 hitForce;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        stateManager = GetComponent<CharacterStateManager>();
+    }
 
     protected override void Start()
     {
@@ -36,25 +53,65 @@ public class PlayerBallInteractor : BallInteractor
         }
         else if (other.transform.CompareTag("EnemyDodgeball"))
         {
+            hitForce = other.relativeVelocity;
+            shouldRagdoll = true;
+            StopWindUp();
             print("Hit by enemy ball!");
         }
     }
 
     protected override void Update()
     {
-        base.Update();
-
-        if (Input.GetMouseButtonDown(0) && HasBall())
-            WindUpBall();
-        else if (windUp && Input.GetMouseButtonUp(0))
+        if (stateManager.canMove)
         {
-            ThrowBall();
+            base.Update();
 
-            //Added by Ein
-            animator.SetTrigger("BallThrown");
+            if (Input.GetMouseButtonDown(0) && HasBall())
+                WindUpBall();
+            else if (windUp && Input.GetMouseButtonUp(0))
+            {
+                ThrowBall();
+
+                //Added by Ein
+                animator.SetTrigger("BallThrown");
+            }
+            else if (windUp && Input.GetMouseButtonDown(1))
+                StopWindUp();
         }
-        else if (windUp && Input.GetMouseButtonDown(1))
-            StopWindUp();
+
+        if (shouldRagdoll)
+            HandleRagdoll();
+    }
+
+    private void HandleRagdoll()
+    {
+        if (!ragdoll.activeInHierarchy)
+            ActivateRagdoll();
+
+        currentTime += Time.deltaTime;
+        if (currentTime > ragdollTime)
+        {
+            DeactiveRagdoll();
+            currentTime = 0;
+            shouldRagdoll = false;
+        }
+    }
+
+    private void ActivateRagdoll()
+    {
+        ragdoll.SetActive(true);
+        animatedChalky.SetActive(false);
+        stateManager.canMove = false;
+        GetComponent<Rigidbody>().AddForce(hitForce / 2, ForceMode.VelocityChange);
+        ragdollSpine.AddForce(hitForce * 2f, ForceMode.VelocityChange);
+    }
+
+    private void DeactiveRagdoll()
+    {
+        ragdoll.SetActive(false);
+        ragdollSpine.MovePosition(transform.position);
+        animatedChalky.SetActive(true);
+        stateManager.canMove = true;
     }
 
     public override void Targeted()

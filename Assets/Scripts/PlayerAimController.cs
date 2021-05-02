@@ -10,6 +10,7 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterRotateWithCamera))]
 [RequireComponent(typeof(BallInteractor))]
+[RequireComponent(typeof(CharacterStateManager))]
 public class PlayerAimController : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
@@ -19,14 +20,19 @@ public class PlayerAimController : MonoBehaviour
 
     private CharacterRotateWithCamera playerRotator;
     private BallInteractor ballInteractor;
+    private CharacterStateManager stateManager;
 
     [SerializeField] private float switchWaitTime = 0.25f;
     private bool aiming;
+
+    private enum AimState { NOT_AIMING, AIMING };
+    private AimState state;
 
     private void Awake()
     {
         playerRotator = GetComponent<CharacterRotateWithCamera>();
         ballInteractor = GetComponent<BallInteractor>();
+        stateManager = GetComponent<CharacterStateManager>();
     }
 
     private void Start()
@@ -36,6 +42,14 @@ public class PlayerAimController : MonoBehaviour
 
     void Update()
     {
+        if (!stateManager.canMove && state == AimState.AIMING)
+        {
+            StartCoroutine(SwitchToMain());
+        }
+
+        if (!stateManager.canMove)
+            return;
+
         if (Input.GetMouseButtonDown(0) && ballInteractor.HasBall())
         {
             StopAllCoroutines();
@@ -58,6 +72,7 @@ public class PlayerAimController : MonoBehaviour
         aimCamera.SetActive(false);
 
         playerRotator.ResetAngles();
+        state = AimState.NOT_AIMING;
     }
 
     private IEnumerator SwitchToAim()
@@ -70,6 +85,7 @@ public class PlayerAimController : MonoBehaviour
         aimCamera.SetActive(true);
 
         playerRotator.SwitchToAimAngles();
+        state = AimState.AIMING;
     }
 
     public bool IsAiming()

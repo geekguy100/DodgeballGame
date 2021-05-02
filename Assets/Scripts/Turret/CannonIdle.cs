@@ -53,7 +53,6 @@ public class CannonIdle : ICannonState
     /// <summary>
     /// Rotates the cannon in search of a target.
     /// </summary>
-    /// <returns></returns>
     private IEnumerator Survey()
     {
         Vector3 newRot = cannon.CannonBody.eulerAngles;

@@ -78,8 +78,11 @@ public class CannonFire : ICannonState
         while (targetInRange)
         {
             yield return new WaitForSeconds(timeBetweenShots);
-            Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
-            db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
+            if (targetInRange)
+            {
+                Rigidbody db = Instantiate(dodgeball, cannon.origin.position, Quaternion.identity);
+                db.AddForce(-cannon.origin.forward * shootForce, ForceMode.Impulse);
+            }
         }
     }
 

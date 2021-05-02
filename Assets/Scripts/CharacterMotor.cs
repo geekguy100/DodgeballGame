@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterAudioManager))]
 [RequireComponent(typeof(ISpecialAbility))]
+[RequireComponent(typeof(CharacterStateManager))]
 public class CharacterMotor : MonoBehaviour
 {
     //Added by Ein
@@ -61,7 +62,7 @@ public class CharacterMotor : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private AbilityUIElement jumpUIAnim;
 
-
+    private CharacterStateManager stateManager;
 
     
 
@@ -73,6 +74,8 @@ public class CharacterMotor : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         specialAbility = GetComponent<ISpecialAbility>();
         audioManager = GetComponent<CharacterAudioManager>();
+
+        stateManager = GetComponent<CharacterStateManager>();
     }
 
     private void Update()
@@ -101,11 +104,11 @@ public class CharacterMotor : MonoBehaviour
     #region --- Movement ---
     public void Move(Vector3 dir)
     {
-        //if (!canMove)
-        //{
-        //    localMovementDirection = Vector3.zero;
-        //    return;
-        //}
+        if (!stateManager.canMove)
+        {
+            localMovementDirection = Vector3.zero;
+            return;
+        }
 
         localMovementDirection = dir;
 
@@ -136,7 +139,7 @@ public class CharacterMotor : MonoBehaviour
     #region --- Jumping ---
     public void Jump()
     {
-        if (GameStats.paused)
+        if (GameStats.paused || !stateManager.canMove)
             return;
 
         if (currentJumps < maxJumps)
