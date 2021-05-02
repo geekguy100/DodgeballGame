@@ -37,6 +37,7 @@ public abstract class BallInteractor : MonoBehaviour
     [SerializeField] private float arcAmount;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private LayerMask whatIsEnemy;
+    [SerializeField] private LayerMask ignoreLineCast;
 
     //private Vector3 hitPos;
     private bool raycastHit;
@@ -74,7 +75,6 @@ public abstract class BallInteractor : MonoBehaviour
             {
                 if (Physics.Linecast(ball.position, target.position, out RaycastHit linecastHit))
                 {
-                    print("LINECAST: " + linecastHit.transform.gameObject.name);
                     // We lost sight of our target, so we set it to null.
 
                     if (whatIsEnemy == (whatIsEnemy | 1 << linecastHit.transform.gameObject.layer))
@@ -87,14 +87,15 @@ public abstract class BallInteractor : MonoBehaviour
                         
                         if (hitTransform != target)
                         {
-                            print("TARGET NULL");
+                            print("TARGET NULL BY " + hitTransform.name);
                             target = null;
                             SetLineColor(Color.white);
                         }
                     }
-                    else
+                    // If we intersected with something that we shouldn''t be ignoring, set target to null.
+                    else /*if (ignoreLineCast != (ignoreLineCast | 1 << linecastHit.transform.gameObject.layer))*/
                     {
-                        print("TARGET NULL");
+                        print("TARGET NULL BY " + linecastHit.transform.name);
                         target = null;
                         SetLineColor(Color.white);
                     }

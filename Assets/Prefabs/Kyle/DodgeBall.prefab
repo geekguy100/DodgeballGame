@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8138149730207957715}
   - component: {fileID: 7435743898910989908}
   - component: {fileID: 7435743898910989909}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DodgeBall
   m_TagString: Dodgeball
   m_Icon: {fileID: 0}

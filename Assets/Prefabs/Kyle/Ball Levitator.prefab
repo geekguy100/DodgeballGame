@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4529656734727090951}
   - component: {fileID: 1817314071445096397}
   - component: {fileID: 1079157628165118796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball Levitator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1079157628870159265}
   - component: {fileID: 1079157628870159271}
   - component: {fileID: 1079157628870159270}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LevitationTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
