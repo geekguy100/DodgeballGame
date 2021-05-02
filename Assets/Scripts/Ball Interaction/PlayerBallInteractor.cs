@@ -64,6 +64,9 @@ public class PlayerBallInteractor : BallInteractor
     {
         if (stateManager.canMove)
         {
+            if (GameStats.paused)
+                return;
+
             base.Update();
 
             if (Input.GetMouseButtonDown(0) && HasBall())
