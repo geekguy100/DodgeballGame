@@ -6,14 +6,25 @@
 // Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
 *****************************************************************************/
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject metarig;
+    [SerializeField] private bool shooting;
+    [SerializeField] private GameObject attachedCannon;
 
     private void Awake()
     {
         metarig.SetActive(false);
+    }
+
+    private void Start()
+    {
+        if (shooting)
+            attachedCannon.SetActive(true);
+        else
+            attachedCannon.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,6 +52,7 @@ public class Enemy : MonoBehaviour
 
             Instantiate(VFXFactory.GetRandomVFXPrefab(), transform);
             GetComponentInParent<FollowPath>().Stop();
+            transform.GetChild(0).gameObject.SetActive(false);
             GameStats.EnemyHit();
             EventManager.EnemyHit();
         }
