@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             }
 
             Instantiate(VFXFactory.GetRandomVFXPrefab(), transform);
-            GetComponentInParent<FollowPath>().Stop();
+            GetComponentInParent<FollowPath>()?.Stop();
             transform.GetChild(0).gameObject.SetActive(false);
             GameStats.EnemyHit();
             EventManager.EnemyHit();
