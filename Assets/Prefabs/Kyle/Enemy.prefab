@@ -1182,7 +1182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metarig: {fileID: 784029187675051625}
-  particles: {fileID: 253568418114500594, guid: a6417ebad1b899246b5e0d80d2c7a81f, type: 3}
 --- !u!1 &6212367494032294657
 GameObject:
   m_ObjectHideFlags: 0
