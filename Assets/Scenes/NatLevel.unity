@@ -746,6 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &46794927
 Transform:
   m_ObjectHideFlags: 0
@@ -1665,6 +1666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 807760261}
   travelTime: 2
+  sporadicMovement: 1
 --- !u!4 &76842710
 Transform:
   m_ObjectHideFlags: 0
@@ -3594,6 +3596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &297653760
 Transform:
   m_ObjectHideFlags: 0
@@ -6031,6 +6034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &579006648
 Transform:
   m_ObjectHideFlags: 0
@@ -10770,6 +10774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &979239159
 Transform:
   m_ObjectHideFlags: 0
@@ -11150,6 +11155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &1009891062
 Transform:
   m_ObjectHideFlags: 0
@@ -16225,6 +16231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &1511600970
 Transform:
   m_ObjectHideFlags: 0
@@ -19096,6 +19103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &1702159523
 Transform:
   m_ObjectHideFlags: 0
@@ -20038,6 +20046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &1824638439
 Transform:
   m_ObjectHideFlags: 0
@@ -20439,6 +20448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   travelTime: 2
+  sporadicMovement: 0
 --- !u!4 &1870109511
 Transform:
   m_ObjectHideFlags: 0

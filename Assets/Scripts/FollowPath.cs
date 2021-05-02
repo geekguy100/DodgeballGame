@@ -14,10 +14,64 @@ public class FollowPath : MonoBehaviour
     [SerializeField] private float travelTime = 2f;
     private int pathPoint = 0;
 
+    [SerializeField] private bool sporadicMovement;
+
     private void Start()
     {
-        StartCoroutine(TraversePath());
+        if (sporadicMovement)
+            StartCoroutine(UpdateMovement());
+        else
+            StartCoroutine(TraversePath());
     }
+
+    #region --- Sporadic Movement ---
+    private IEnumerator Translate(Vector3 endPos)
+    {
+        Vector3 startPos = transform.localPosition;
+        Vector3 finalPos = new Vector3(endPos.x, startPos.y, endPos.z);
+
+        float movementSpeed = Random.Range(2f, 10f);
+
+        float dist = Vector3.Distance(startPos, endPos);
+        float distCovered = 0f;
+
+        float counter = 0f;
+        float fractionOfJourney = 0f;
+
+        while (fractionOfJourney < 1f)
+        {
+            counter += Time.deltaTime;
+            distCovered = counter * movementSpeed;
+            fractionOfJourney = distCovered / dist;
+
+            transform.localPosition = Vector3.Lerp(startPos, finalPos, fractionOfJourney);
+            yield return null;
+        }
+    }
+
+    private IEnumerator UpdateMovement()
+    {
+        Coroutine translationCoroutine = null;
+
+        Transform[] endPositions = new Transform[path.childCount];
+        for (int i = 0; i < endPositions.Length; ++i)
+            endPositions[i] = path.GetChild(i);
+
+        while (true)
+        {
+            if (translationCoroutine != null)
+                StopCoroutine(translationCoroutine);
+
+            Vector3 position = ArrayHelper.GetRandomElement(endPositions).position;
+            translationCoroutine = StartCoroutine(Translate(position));
+
+            yield return new WaitForSeconds(Random.Range(0f, 0.5f));
+        }
+    }
+
+    #endregion
+
+    #region --- Simple Movement ---
 
     private IEnumerator TraversePath()
     {
@@ -54,6 +108,8 @@ public class FollowPath : MonoBehaviour
             yield return null;
         }
     }
+
+    #endregion
 
     public void Stop()
     {
