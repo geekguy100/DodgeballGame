@@ -79,6 +79,7 @@ public class CannonIdle : ICannonState
         {
             Vector3 vectorToPlayer = (other.transform.position - cannon.origin.position);
             float angle = Vector3.Angle(-cannon.origin.forward, vectorToPlayer);
+            print(angle);
 
             if (angle <= detectionAngle)
             {
