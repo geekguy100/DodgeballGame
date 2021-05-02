@@ -69,13 +69,16 @@ public abstract class BallInteractor : MonoBehaviour
 
             // We found an enemy, so that is our current target.
             if (/*Physics.Raycast(ball.transform.position + look.forward, look.forward, out RaycastHit hit, rayLength, whatIsEnemy)*/ 
-                Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength, whatIsEnemy))
+                Physics.Raycast(screenCenter, look.forward, out RaycastHit hit, rayLength))
             {
-                if (hit.transform.CompareTag("Enemy"))
-                    target = hit.transform.GetChild(0);
-                else
-                    target = hit.transform;
-                //hitPos = hit.transform.position;
+                if (whatIsEnemy == (whatIsEnemy | 1 << hit.transform.gameObject.layer))
+                {
+                    if (hit.transform.CompareTag("Enemy"))
+                        target = hit.transform.GetChild(0);
+                    else
+                        target = hit.transform;
+                    //hitPos = hit.transform.position;
+                }
             }
 
             DrawLine();
