@@ -50,6 +50,8 @@ public class CharacterMotor : MonoBehaviour
     [Tooltip("True if each jump should be less powerful than the previous, regardless of the consecutiveJumpMultiplier value.")]
     [SerializeField] private bool consecutiveJumpsLessPowerful = true;
     private int currentJumps;
+    public int CurrentJumps { get { return currentJumps; } }
+    public int MaxJumps { get { return maxJumps; } }
 
     #endregion
 

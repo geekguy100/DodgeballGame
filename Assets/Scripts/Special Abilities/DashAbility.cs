@@ -60,6 +60,7 @@ public class DashAbility : ISpecialAbility
         rb.AddForce(input * dashStrength, ForceMode.VelocityChange);
 
         StartCoroutine(ArcJump(characterMotor));
+
         yield return new WaitForSeconds(dashTime);
 
         //if (!arcJumped)
@@ -72,12 +73,14 @@ public class DashAbility : ISpecialAbility
     private IEnumerator ArcJump(CharacterMotor characterMotor)
     {
         float currentTime = 0f;
+        int currentJumps = characterMotor.CurrentJumps;
+        int maxJumps = characterMotor.MaxJumps;
 
         // We keep track of the dashTime so we HAVE to jump mid dash.
         while (currentTime < dashTime)
         {
             currentTime += Time.deltaTime;
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && currentJumps < maxJumps)
             {
                 //print("ARCING");
                 //arcJumped = true;
