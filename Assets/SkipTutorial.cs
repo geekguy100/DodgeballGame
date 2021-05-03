@@ -37,6 +37,8 @@ public class SkipTutorial : MonoBehaviour
     private IEnumerator TransitionCoroutine()
     {
         yield return new WaitForSeconds(2f);
+        if (GameStats.paused)
+            EventManager.GamePause(false);
         SceneManager.LoadScene("NatLevel");
     }
 }
