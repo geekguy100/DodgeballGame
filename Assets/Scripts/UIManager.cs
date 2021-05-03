@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
         EventManager.OnEnemyHit -= UpdateScoreText;
         EventManager.OnGamePause -= TogglePauseMenu;
         EventManager.OnGameWin -= ShowWinPanel;
+        EventManager.OnPlayerToggleLockOn -= ToggleLockOn;
 
         if (timer != null)
             timer.OnTimerChange -= UpdateTimerText;
