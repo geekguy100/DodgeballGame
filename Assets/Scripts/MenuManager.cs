@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("NatLevel");
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void QuitGame()
