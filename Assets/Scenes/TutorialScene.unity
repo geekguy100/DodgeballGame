@@ -9531,6 +9531,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593955, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593955, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593955, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593955, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 54.3579
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593955, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593956, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_text
+      value: Awesome job! Get ready for some real action now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593956, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_fontSize
+      value: 20.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055278478593956, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 20.84
+      objectReference: {fileID: 0}
     - target: {fileID: 7686055278690281170, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9626,6 +9658,22 @@ PrefabInstance:
     - target: {fileID: 7686055278835237158, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055279244461644, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055279244461645, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 292.3995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055279244461645, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 54.3579
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686055279244461645, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -66.2
       objectReference: {fileID: 0}
     - target: {fileID: 7686055279354642804, guid: 9c5c51f2eb6cc8047a8e8a98518f9a8f, type: 3}
       propertyPath: m_text
